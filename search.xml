@@ -1359,7 +1359,36 @@
 <p>如果一个子类没有实现抽象父类中所有的抽象方法，则子类也成为一个抽象类；如果一个子类实现抽象父类中所有的抽象方法，则子类不是一个抽象类。</p>
 <p>我们可以将一个没有任何抽象方法的类声明为abstract，避免由这个类产生任何的对象。</p>
 <p>构造方法、static方法、private方法、final方法不能被声明为抽象的方法。</p>
-<h4 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h4><h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>Java只支持单继承，不支持多继承，即一个类只能有一个父类。但是在实际应用中，又经常需要使用<strong>多继承</strong>来解决问题。为了解决该问题，Java提供了接口来实现类的多继承功能。</p>
+<h4 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h4><p>内部类就是在其他类内部定义的类。</p>
+<blockquote>
+<p>内部类的作用</p>
+</blockquote>
+<p> 隐藏你不想让别人知道的操作，也即封装性。</p>
+<p> 一个内部类对象可以访问创建它的外部类对象的内容，甚至包括私有变量。</p>
+<p>内部类有以下四种形式：成员内部类、局部内部类、静态内部类、匿名内部类。</p>
+<h6 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Outer</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> index=<span class="number">100</span>; <span class="comment">// 成员变量</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">        Inner i=<span class="keyword">new</span> <span class="title class_">Inner</span>();</span><br><span class="line">        i.print();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Inner</span>&#123; <span class="comment">// 成员内部类</span></span><br><span class="line">        <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(index);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用格式：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Outer</span> <span class="variable">out</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Outer</span>();</span><br><span class="line">Outer.<span class="type">Inner</span> <span class="variable">inner</span> <span class="operator">=</span> out.<span class="keyword">new</span> <span class="title class_">Inner</span>();</span><br><span class="line">inner.print()</span><br></pre></td></tr></table></figure>
+
+<p>只有创建了成员内部类的实例，才能使用成员内部类的变量和方法。</p>
+<h4 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h4><p>就是没有名名称的内部类，一般格式为</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">ClassName</span>()&#123;……&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Sample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Apple</span>() &#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">introduction</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;这是一个匿名类，但是谁也无法使用它。&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h4><p>object是 所有java类的祖先，所有类中隐含了extends Object</p>
+<p>所以说每个类都有这个方法</p>
+<p><code>toString（）</code>方法</p>
+<p><code>equals（）</code>方法，<code>hashCode()</code>方法</p>
+<p><code>clone（）</code> 方法</p>
+<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Garbage</span> &#123;</span><br><span class="line">    <span class="type">int</span> index; <span class="comment">//当前对象的索引值</span></span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> count; <span class="comment">//当前产生了几个对象</span></span><br><span class="line">    Garbage()&#123;</span><br><span class="line">        count++;</span><br><span class="line">        index=count;</span><br><span class="line">        System.out.println(<span class="string">&quot;第&quot;</span>+index+<span class="string">&quot;个对象构建&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Garbage</span>(); <span class="comment">//垃圾内存</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Garbage</span>(); <span class="comment">//垃圾内存</span></span><br><span class="line">        System.gc();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">finalize</span><span class="params">()</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;第&quot;</span>+index+<span class="string">&quot;个对象被回收&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java中的finalize()方法</p>
+<p>用于在对象被垃圾回收机制销毁之前执行一些资源回收工作，由垃</p>
+<p>圾回收系统调用，可以重写该方法。</p>
+<p>System.gc()的作用</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>Java只支持单继承，不支持多继承，即一个类只能有一个父类。但是在实际应用中，又经常需要使用<strong>多继承</strong>来解决问题。为了解决该问题，Java提供了接口来实现类的多继承功能。</p>
 <p>如果一个抽象类中的所有方法都是抽象的，我们就可以将这个类用另外一种方式来定义，也就是接口定义。（也就是把&#x3D;相当于抽象类更加规范化）</p>
 <p>接口是抽象方法和常量值的定义的集合，从本质上讲，接口是一种特殊的抽象类，这种抽象类中只包含常量和方法的定义，而没有变量和方法的实现。</p>
 <h3 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">[修饰符] interface 接口名 [extends 父接口名列表]&#123;</span><br><span class="line">    [<span class="keyword">public</span>] [<span class="keyword">static</span>] [<span class="keyword">final</span>] 常量;</span><br><span class="line">    [<span class="keyword">public</span>] [<span class="keyword">abstract</span>] 方法;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1375,6 +1404,75 @@
 <p>接口举例子</p>
 <h3 id="接口多继承"><a href="#接口多继承" class="headerlink" title="接口多继承"></a>接口多继承</h3><p>一个接口可以继承多个接口</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Sofa</span> <span class="keyword">extends</span> <span class="title class_">Sittable</span>,Lie<span class="comment">//这是两个接口</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><p>如果使用大量的if语句的话会非常麻烦</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">readFile &#123; </span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    打开文件；</span><br><span class="line">    判断大小;</span><br><span class="line">    分配内存;</span><br><span class="line">    读入内存; </span><br><span class="line">    关掉文件; </span><br><span class="line">    &#125; <span class="keyword">catch</span> (文件打开失败) &#123; 处理代码；</span><br><span class="line">    &#125; <span class="keyword">catch</span> (大小取不到失败) &#123; 处理代码;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (内存分配失败) &#123; 处理代码;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (读取失败) &#123; 处理代码;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (文件关闭失败) &#123; 处理代码; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优雅</strong></p>
+<h2 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h2><p>异常通常分为三种类型：</p>
+<blockquote>
+<p>第一类是Java虚拟机由于某些内部错误产生的异常，这类异常不在用户程序的控制之内，用户不需要处理这类异常；</p>
+</blockquote>
+<blockquote>
+<p>第二类是标准异常，这类异常通常是由程序代码中的错误产生的，例如被0除、数组下标越界等。这是需要用户程序处理的异常；</p>
+</blockquote>
+<blockquote>
+<p>第三类是用户根据需要在程序中自定义的异常</p>
+</blockquote>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240506145218933.png" alt="image-20240506145218933"></p>
+<h3 id="Error类"><a href="#Error类" class="headerlink" title="Error类"></a>Error类</h3><p>Error类及其子类通常用来描述Java运行系统中的内部错误以及资源耗尽的错误。Error表示的异常是比较严重，仅靠修改程序本身是不能恢复执行的，被称为致命异常类。</p>
+<h3 id="Exception类"><a href="#Exception类" class="headerlink" title="Exception类"></a>Exception类</h3><p>Exception类可称为非致命异常类，它代表了另一种异常。发生该异常的程序，通过捕获处理后可正常运行，保持程序的可读性及可靠性</p>
+<h2 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h2><h3 id="Java中的异常处理机制"><a href="#Java中的异常处理机制" class="headerlink" title="Java中的异常处理机制"></a>Java中的异常处理机制</h3><blockquote>
+<p>声明异常、抛出异常、捕获异常、处理异常</p>
+</blockquote>
+<h3 id="5个关键字"><a href="#5个关键字" class="headerlink" title="5个关键字"></a>5个关键字</h3><blockquote>
+<p>try、catch、finally、throw、throws</p>
+</blockquote>
+<p>处理过程：</p>
+<p>Java程序在执行过程中如出现异常，会自动生成一个异常类对象，该异常对象将被提交给Java运行时系统，这个过程称为**抛出(throw)**异常。</p>
+<p>当Java运行时系统接收到异常对象时，会寻找能处理这一异常的代码并把当前异常对象交给其处理，这一过程称为**捕获(catch)**异常。</p>
+<p>如果Java运行时系统找不到可以捕获异常的方法，则运行时系统将终止，相应的Java程序也将退出。</p>
+<p>使用<strong>try-catch-finally</strong>语句</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123; </span><br><span class="line">	可能出现异常的程序代码</span><br><span class="line">&#125;<span class="keyword">catch</span> ( IOException 异常对象e )&#123; </span><br><span class="line">	进行IOException异常处理的代码<span class="comment">//这里调用异常类的方法</span></span><br><span class="line">&#125; <span class="keyword">catch</span>( NullPointerException 异常对象e ) &#123;</span><br><span class="line">	进行NullPointerException异常处理的代码</span><br><span class="line">&#125; ... ... </span><br><span class="line"><span class="keyword">catch</span> (Exception 异常对象e )&#123; </span><br><span class="line">		进行Exception异常处理的代码</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">	最终清理的程序代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1、每个try语句块后至少必须紧跟一个catch语句块或finally语句块。</p>
+<p>2、在try语句与catch语句之间、相邻catch语句之间，不允许出现其他程序代码。</p>
+<p>3、finally语句也可以没有。如有，无论有无异常，最后必须执行finally语句中的语句体。</p>
+<p>4、catch语句仅需要一个参数，必须是Throwable类及其子类的对象。</p>
+<p>常见以 <code>Exception</code> 为父类的异常对象包括：</p>
+<ol>
+<li><code>NullPointerException</code>（空指针异常）：当应用程序试图访问空对象或者对 <code>null</code> 值的对象进行操作时抛出。</li>
+<li><code>ArrayIndexOutOfBoundsException</code>（数组下标越界异常）：当应用程序试图访问数组的索引超出有效范围时抛出。</li>
+<li><code>NumberFormatException</code>（数字格式异常）：当应用程序试图将一个字符串转换为数字，但字符串无法被正确解析为数字时抛出。</li>
+<li><code>ClassCastException</code>（类转换异常）：当尝试将一个对象强制转换为与其实际类型不兼容的类型时抛出。</li>
+<li><code>ArithmeticException</code>（算术异常）：当在进行算术运算时发生错误，例如除数为零时抛出。</li>
+<li><code>IllegalArgumentException</code>（非法参数异常）：当传递给方法的参数不符合预期时抛出。</li>
+<li><code>IOException</code>（输入&#x2F;输出异常）：当发生与输入&#x2F;输出相关的错误时抛出，例如文件无法打开、读取或写入。</li>
+<li><code>InterruptedException</code>（中断异常）：当线程在等待、休眠或被中断时抛出。</li>
+</ol>
+<p>如果不知道是什么类型错误，那就在最后使用expection</p>
+<h3 id="throws"><a href="#throws" class="headerlink" title="throws"></a>throws</h3><p>throws对方法可能出现的异常进行声明</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">devide</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> x/y; </span><br><span class="line">        <span class="keyword">return</span> result; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestException</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123; </span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            	<span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Test</span>().devide(<span class="number">3</span>,<span class="number">0</span>);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(Exception e)&#123; </span><br><span class="line">            	System.out.println(e.getMessage()); </span><br><span class="line">    		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>devide</code>函数要求调用它的函数必须要有异常处理，这就落在了<code>TestException</code>,如果<code>TestException</code>也使用了<code>throws</code>，那就调用<code>TestException</code>的函数来进行异常处理</p>
+<h3 id="throw"><a href="#throw" class="headerlink" title="throw"></a>throw</h3><p>throw抛出具体异常对象</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">check</span><span class="params">(String strage)</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> Integer.parseInt(strage);</span><br><span class="line">    <span class="keyword">if</span>(age&lt;<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(“年龄不能为负数！”);</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">myage</span> <span class="operator">=</span> check(“-<span class="number">101</span>”);</span><br><span class="line">            System.out.println(myage);</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">       		System.out.println(“出错原因：” + e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>抛出throw异常之后,使用try-catch语句捕获throw抛出的异常并进行处理</p>
+<h2 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h2><p>由用户自己定义的异常称为自定义异常。自定义异常一般通过继承Exception类来实现。其一般语法格式为：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> class 自定义异常类名 <span class="keyword">extends</span> <span class="title class_">Exception</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//类体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于自定义异常，Java系统不会自动为用户抛出属于该类的对象，</p>
+<p>用户须在程序中使用throw关键字来自行抛出异常对象。throw语</p>
+<p>句的通常形式如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">throw</span> 异常类对象；</span><br></pre></td></tr></table></figure>
+
+<p>ex:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1、定义一个检查邮件字符串的方法checkEmail(String)，对参数中的邮件地址进行检查。</span></span><br><span class="line"><span class="comment">//2、定义一个邮件地址异常类，处理如下几种情况：</span></span><br><span class="line"><span class="comment">//（1）邮件地址中没有”@”符号；  （提示： indexOf函数）</span></span><br><span class="line"><span class="comment">//（2）邮件地址中的“@“符号之前的字符个数至少为6位。</span></span><br><span class="line"><span class="comment">//3、从键盘输入邮件地址，进行测试。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EmailException</span> <span class="keyword">extends</span> <span class="title class_">RuntimeException</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="title function_">EmailException</span><span class="params">(String str)</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>(str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">testException</span> &#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">checkEmail</span><span class="params">(String mail)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(mail.indexOf(<span class="string">&quot;@&quot;</span>)&lt;<span class="number">0</span>) </span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">EmailException</span>(<span class="string">&quot;邮件地址中没有”@”符号&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span>(mail.indexOf(<span class="string">&quot;@&quot;</span>)&lt;<span class="number">6</span>) </span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">EmailException</span>(<span class="string">&quot;邮件地址中的“@“符号之前的字符个数至少为6位。&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>  &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			checkEmail(<span class="string">&quot;1245@54&quot;</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (EmailException e) &#123;</span><br><span class="line">			System.out.println(e);</span><br><span class="line">		&#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -2194,7 +2292,82 @@
   <entry>
     <title>JWT</title>
     <url>/2024/05/06/JWT/</url>
-    <content><![CDATA[<p>dasdasda</p>
+    <content><![CDATA[<p>如何在gin框架中使用JWT[<a href="https://www.liwenzhou.com/posts/Go/json-web-token/#c-0-0-0">在gin框架中使用JWT | 李文周的博客 (liwenzhou.com)</a>]</p>
+<p>JWT全称JSON Web Token是一种跨域认证解决方案，属于一个开放的标准，它规定了一种Token实现方式，目前多用于前后端分离项目和OAuth2.0业务场景下。</p>
+<h1 id="为什么需要JWT？"><a href="#为什么需要JWT？" class="headerlink" title="为什么需要JWT？"></a>为什么需要JWT？</h1><p>在之前的一些web项目中，我们通常使用的是<code>Cookie-Session</code>模式实现用户认证。相关流程大致如下：</p>
+<ol>
+<li>用户在浏览器端填写用户名和密码，并发送给服务端</li>
+<li>服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的session数据和一个与之对应的标识（通常称为session_id）</li>
+<li>服务端返回响应时将上一步的session_id写入用户浏览器的Cookie</li>
+<li>后续用户来自该浏览器的每次请求都会自动携带包含session_id的Cookie</li>
+<li>服务端通过请求中的session_id就能找到之前保存的该用户那份session数据，从而获取该用户的相关信息。</li>
+</ol>
+<p>这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的session数据。</p>
+<p>在移动互联网时代，我们的用户可能使用浏览器也可能使用APP来访问我们的服务，我们的web应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下<code>Cookie-Session</code>的模式就有些力不从心了。</p>
+<p>JWT就是一种基于Token的轻量级认证模式，服务端认证通过后，会生成一个JSON对象，经过签名后得到一个Token（令牌）再发回给用户，用户后续请求只需要带上这个Token，服务端解密之后就能获取该用户的相关信息了。</p>
+<p>想要了解JWT的原理，推荐大家阅读：<a href="https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html">阮一峰的JWT入门教程</a></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>JWT 的原理是，服务器认证以后，生成一个 JSON 对象，发回给用户，就像下面这样。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;姓名&quot;</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">  <span class="string">&quot;角色&quot;</span>: <span class="string">&quot;管理员&quot;</span>,</span><br><span class="line">  <span class="string">&quot;到期时间&quot;</span>: <span class="string">&quot;2018年7月1日0点0分&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>以后，用户与服务端通信的时候，都要发回这个 JSON 对象。服务器完全只靠这个对象认定用户身份。为了防止用户篡改数据，服务器在生成这个对象的时候，会加上签名（详见后文）。</p>
+<p>服务器就不保存任何 session 数据了，也就是说，服务器变成无状态了，从而比较容易实现扩展。</p>
+<h1 id="JWT-的数据结构"><a href="#JWT-的数据结构" class="headerlink" title="JWT 的数据结构"></a>JWT 的数据结构</h1><p>实际的 JWT 大概就像下面这样。</p>
+<p><img src="https://www.wangbase.com/blogimg/asset/201807/bg2018072304.jpg" alt="img"></p>
+<p>它是一个很长的字符串，中间用点（<code>.</code>）分隔成三个部分。注意，JWT 内部是没有换行的，这里只是为了便于展示，将它写成了几行。</p>
+<p>JWT 的三个部分依次如下。</p>
+<blockquote>
+<ul>
+<li>Header（头部）</li>
+<li>Payload（负载）</li>
+<li>Signature（签名）</li>
+</ul>
+</blockquote>
+<p>写成一行，就是下面的样子。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Header</span>.<span class="property">Payload</span>.<span class="property">Signature</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="https://www.wangbase.com/blogimg/asset/201807/bg2018072303.jpg" alt="img"></p>
+<p>下面依次介绍这三个部分。</p>
+<h3 id="3-1-Header"><a href="#3-1-Header" class="headerlink" title="3.1 Header"></a>3.1 Header</h3><p>Header 部分是一个 JSON 对象，描述 JWT 的元数据，通常是下面的样子。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;alg&quot;</span>: <span class="string">&quot;HS256&quot;</span>,</span><br><span class="line">  <span class="string">&quot;typ&quot;</span>: <span class="string">&quot;JWT&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面代码中，<code>alg</code>属性表示签名的算法（algorithm），默认是 HMAC SHA256（写成 HS256）；<code>typ</code>属性表示这个令牌（token）的类型（type），JWT 令牌统一写为<code>JWT</code>。</p>
+<p>最后，将上面的 JSON 对象使用 Base64URL 算法（详见后文）转成字符串。</p>
+<h3 id="3-2-Payload"><a href="#3-2-Payload" class="headerlink" title="3.2 Payload"></a>3.2 Payload</h3><p>Payload 部分也是一个 JSON 对象，用来存放实际需要传递的数据。JWT 规定了7个官方字段，供选用。</p>
+<blockquote>
+<ul>
+<li>iss (issuer)：签发人</li>
+<li>exp (expiration time)：过期时间</li>
+<li>sub (subject)：主题</li>
+<li>aud (audience)：受众</li>
+<li>nbf (Not Before)：生效时间</li>
+<li>iat (Issued At)：签发时间</li>
+<li>jti (JWT ID)：编号</li>
+</ul>
+</blockquote>
+<p>除了官方字段，你还可以在这个部分定义私有字段，下面就是一个例子。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;sub&quot;</span>: <span class="string">&quot;1234567890&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;John Doe&quot;</span>,</span><br><span class="line">  <span class="string">&quot;admin&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>注意，JWT 默认是不加密的，任何人都可以读到，所以不要把秘密信息放在这个部分。</p>
+<p>这个 JSON 对象也要使用 Base64URL 算法转成字符串。</p>
+<h3 id="3-3-Signature"><a href="#3-3-Signature" class="headerlink" title="3.3 Signature"></a>3.3 Signature</h3><p>Signature 部分是对前两部分的签名，防止数据篡改。</p>
+<p>首先，需要指定一个密钥（secret）。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法（默认是 HMAC SHA256），按照下面的公式产生签名。</p>
+<blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">HMACSHA256</span>(</span><br><span class="line">  <span class="title function_">base64UrlEncode</span>(header) + <span class="string">&quot;.&quot;</span> +</span><br><span class="line">  <span class="title function_">base64UrlEncode</span>(payload),</span><br><span class="line">  secret)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>算出签名以后，把 Header、Payload、Signature 三个部分拼成一个字符串，每个部分之间用”点”（<code>.</code>）分隔，就可以返回给用户。</p>
+<h3 id="3-4-Base64URL"><a href="#3-4-Base64URL" class="headerlink" title="3.4 Base64URL"></a>3.4 Base64URL</h3><p>前面提到，Header 和 Payload 串型化的算法是 Base64URL。这个算法跟 Base64 算法基本类似，但有一些小的不同。</p>
+<p>JWT 作为一个令牌（token），有些场合可能会放到 URL（比如 api.example.com&#x2F;?token&#x3D;xxx）。Base64 有三个字符<code>+</code>、<code>/</code>和<code>=</code>，在 URL 里面有特殊含义，所以要被替换掉：<code>=</code>被省略、<code>+</code>替换成<code>-</code>，<code>/</code>替换成<code>_</code> 。这就是 Base64URL 算法。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>​	创建：我们要定义用于签名的字符串，这个字符串应该要被保护好，不能被用户知道，然后编写函数用于创建jwt，里面要定义claims，里面包括payload和RegisteredClaims，最后再和header一起赋值给token，再加上签名输出token。</p>
+<p>解析：判断是否携带token，如果没有的话就返回错误。</p>
+<h3 id="默认Claim"><a href="#默认Claim" class="headerlink" title="默认Claim"></a>默认Claim</h3><p>如果我们直接使用JWT中默认的字段，没有其他定制化的需求则可以直接使用这个包中的和方法快速生成和解析token。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 用于签名的字符串</span></span><br><span class="line"><span class="keyword">var</span> mySigningKey = []<span class="type">byte</span>(<span class="string">&quot;liwenzhou.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// GenRegisteredClaims 使用默认声明创建jwt</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GenRegisteredClaims</span><span class="params">()</span></span> (<span class="type">string</span>, <span class="type">error</span>) &#123;</span><br><span class="line">	<span class="comment">// 创建 Claims</span></span><br><span class="line">	claims := &amp;jwt.RegisteredClaims&#123;</span><br><span class="line">		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * <span class="number">24</span>)), <span class="comment">// 过期时间</span></span><br><span class="line">		Issuer:    <span class="string">&quot;qimi&quot;</span>,                                             <span class="comment">// 签发人</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 生成token对象</span></span><br><span class="line">	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line">	<span class="comment">// 生成签名字符串</span></span><br><span class="line">	<span class="keyword">return</span> token.SignedString(mySigningKey)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ParseRegisteredClaims 解析jwt</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ValidateRegisteredClaims</span><span class="params">(tokenString <span class="type">string</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="comment">// 解析token</span></span><br><span class="line">	token, err := jwt.Parse(tokenString, <span class="function"><span class="keyword">func</span><span class="params">(token *jwt.Token)</span></span> (<span class="keyword">interface</span>&#123;&#125;, <span class="type">error</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> mySigningKey, <span class="literal">nil</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123; <span class="comment">// 解析token失败</span></span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> token.Valid</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="如何在gin框架中使用"><a href="#如何在gin框架中使用" class="headerlink" title="如何在gin框架中使用?"></a>如何在gin框架中使用?</h2><p><a href="https://jaketmoon.github.io/2024/04/24/go-gin%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BAtodolist%E7%BD%91%E9%A1%B5/">go-gin框架搭建todolist网页 | Jaketmoon の 博客</a></p>
+<p>可以在这个文章中的JWT部分查看</p>
 ]]></content>
       <categories>
         <category>web</category>
