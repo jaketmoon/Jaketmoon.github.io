@@ -1423,7 +1423,7 @@
 <blockquote>
 <p>第三类是用户根据需要在程序中自定义的异常</p>
 </blockquote>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240506145218933.png" alt="image-20240506145218933"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240506145218933.png" alt="image-20240506145218933"></p>
 <h3 id="Error类"><a href="#Error类" class="headerlink" title="Error类"></a>Error类</h3><p>Error类及其子类通常用来描述Java运行系统中的内部错误以及资源耗尽的错误。Error表示的异常是比较严重，仅靠修改程序本身是不能恢复执行的，被称为致命异常类。</p>
 <h3 id="Exception类"><a href="#Exception类" class="headerlink" title="Exception类"></a>Exception类</h3><p>Exception类可称为非致命异常类，它代表了另一种异常。发生该异常的程序，通过捕获处理后可正常运行，保持程序的可读性及可靠性</p>
 <h2 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h2><h3 id="Java中的异常处理机制"><a href="#Java中的异常处理机制" class="headerlink" title="Java中的异常处理机制"></a>Java中的异常处理机制</h3><blockquote>
@@ -2128,6 +2128,7 @@
 <li><code>Fail</code>:这个函数的主要目的是根据提供的错误生成一个符合规范的错误响应，并将其发送给客户端。如果提供的错误不是自定义的错误类型，则默认返回一个内部服务器错误响应。</li>
 <li><code>Recovery</code>: 这个 <code>Recovery</code> 函数的作用是捕获并处理请求处理过程中可能发生的意外恐慌。如果发生了恐慌，它会尝试将其转换为一个错误对象，并调用 <code>Fail()</code> 函数生成相应的错误响应。如果无法将恐慌转换为错误对象，则将其转换为字符串，并创建一个新的错误对象进行处理。</li>
 </ul>
+<h1 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h1><p>介绍的话在我之前的博客上，这里直接使用。</p>
 <h1 id="设置模组"><a href="#设置模组" class="headerlink" title="设置模组"></a>设置模组</h1><p>在module文件夹中，我们定义了一些模块化的方法去组织程序。它定义了一个接口和一些函数去管理各个模块</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|-- module.go</span><br><span class="line">|-- todolist</span><br><span class="line">|   |-- add.go</span><br><span class="line">|   |-- delete.go</span><br><span class="line">|   |-- init.go</span><br><span class="line">|   |-- read.go</span><br><span class="line">|   |-- routers.go</span><br><span class="line">|   |-- seek.go</span><br><span class="line">|   `-- update.go</span><br><span class="line">`-- user</span><br><span class="line">    |-- delete.go</span><br><span class="line">    |-- init.go</span><br><span class="line">    |-- login.go</span><br><span class="line">    |-- read.go</span><br><span class="line">    |-- register.go</span><br><span class="line">    |-- routers.go</span><br><span class="line">    `-- update.go</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
