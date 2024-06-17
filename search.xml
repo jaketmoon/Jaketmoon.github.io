@@ -1120,7 +1120,7 @@
 
 
 
-<h1 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h1><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240311143007971.png" alt="image-20240311143007971"></p>
+<h1 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h1><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240311143007971.png" alt="image-20240311143007971"></p>
 <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p>以下是基本数据类型之间的转换规则：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 从低容量到高容量（隐式）：</span><br><span class="line">  - byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt; double</span><br><span class="line">  - char -&gt; int</span><br><span class="line">- 从高容量到低容量（显式）：</span><br><span class="line">  - double -&gt; float -&gt; long -&gt; int -&gt; short -&gt; byte</span><br><span class="line">  - 任何类型 -&gt; char (需要显式转换，且必须是兼容的值)</span><br></pre></td></tr></table></figure>
 
@@ -1221,7 +1221,7 @@
 <blockquote>
 <p>缺省:可以被同一个包中的类访问 。默认的访问权限，可以定义在和public类的同一个文件中</p>
 </blockquote>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240408141935841.png" alt="image-20240408141935841"></p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240408141935841.png" alt="image-20240408141935841"></p>
 <h1 id="数组和java常用类"><a href="#数组和java常用类" class="headerlink" title="数组和java常用类"></a>数组和java常用类</h1><blockquote>
 <p>数组的类型可以为基本数据类型(如int、char)，也可以为引用数据类型(如Point类、Circle类、int[])。</p>
 </blockquote>
@@ -1249,7 +1249,7 @@
 
 <h2 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] xx;</span><br><span class="line">xx=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>][]; </span><br><span class="line">xx[<span class="number">0</span>]=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">1</span>];</span><br><span class="line">xx[<span class="number">1</span>]=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line">xx[<span class="number">2</span>]=<span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>];</span><br></pre></td></tr></table></figure>
 
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240408153304214.png" alt="image-20240408153304214"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240408153304214.png" alt="image-20240408153304214"></p>
 <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p><strong>数据类型【】【】数组标识符 ;</strong></p>
 <p>数据类型 数组标识符【】【】； </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span>[][] days;</span><br><span class="line"><span class="type">boolean</span> holidays[][];</span><br></pre></td></tr></table></figure>
@@ -1317,14 +1317,14 @@
 <p>“&#x3D;&#x3D;”是字符串储存地址比较</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object)</span>区分大小写</span><br><span class="line"><span class="type">boolean</span> <span class="title function_">equalsIgnoreCase</span><span class="params">(String)</span>不区分大小写</span><br></pre></td></tr></table></figure>
 
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415144917881.png" alt="image-20240415144917881"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415144917881.png" alt="image-20240415144917881"></p>
 <p>6.比较大小(前减去后)，返回负数或者true，相同？</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(String)</span>区分大小写 </span><br><span class="line"><span class="type">int</span> <span class="title function_">compareToIgnoreCase</span><span class="params">(String)</span>不区分大小写</span><br></pre></td></tr></table></figure>
 
 <p>7.检索字符</p>
-<p> <img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415151429887.png" alt="image-20240415151429887"></p>
+<p> <img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415151429887.png" alt="image-20240415151429887"></p>
 <p>8.截取子串</p>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415163402973.png" alt="image-20240415163402973"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415163402973.png" alt="image-20240415163402973"></p>
 <h2 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h2><p><strong>String类</strong></p>
 <blockquote>
 <p>定义不可变对象，一旦被创建，就不能修改它的值，对于已经存在的String对象的修改都是重新创建一个新的对象，然后把新的值保存进去。</p>
@@ -1334,14 +1334,14 @@
 <p>定义可变对象，当对它进行修改的时候不会像String那样重新建立只能通过构造函数来建立StringBuffer可安全用于多线程编程StringBuilder用于多线程编程不安全，但速度更快</p>
 </blockquote>
 <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承是一种创建新类的方式，新创建的类包含了另一个类的所有属性和方法。这使得代码的重用成为可能，并且可以在现有的基础上增加新的功能。在Java中，继承是通过<code>extends</code>关键字实现的。动物extends猫，狗，猫extends老虎，豹子</p>
-<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415145518728.png" alt="image-20240415145518728"></p>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415145813680.png" alt="image-20240415145813680"></p>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415145518728.png" alt="image-20240415145518728"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415145813680.png" alt="image-20240415145813680"></p>
 <h2 id="方法的重写（override）"><a href="#方法的重写（override）" class="headerlink" title="方法的重写（override）"></a>方法的重写（override）</h2><p>重载是方法的参数改变了</p>
 <p>在子类中声明与父类相同名字的函数，如果调用的话就遵守子类的声明，前提的参数，返回类型要一致，权限不能缩小，不能抛出新的异常。</p>
 <p>final:写在成员变量前面，则此成员变量无法被修改</p>
 <p>​	写在方法前面，则此方法无法重写</p>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415152840881.png" alt="image-20240415152840881"></p>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240415152617052.png" alt="image-20240415152617052"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415152840881.png" alt="image-20240415152840881"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240415152617052.png" alt="image-20240415152617052"></p>
 <h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super变量表示父类对象</p>
 <p>在子类中使用已经被这个子类重写过的方法，使用super.xxxx</p>
 <h2 id="子类对象实例化"><a href="#子类对象实例化" class="headerlink" title="子类对象实例化"></a>子类对象实例化</h2><p>父类有无参构造函数，子类没有构造函数，在子类对象实例化的时候会直接调用父类的构造函数</p>
@@ -1486,7 +1486,15 @@
 
 
 
-<h1 id="图形化界面"><a href="#图形化界面" class="headerlink" title="图形化界面"></a>图形化界面</h1><h2 id="AWT"><a href="#AWT" class="headerlink" title="AWT"></a>AWT</h2><h1 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h1><p>创建文件</p>
+<h1 id="图形化界面"><a href="#图形化界面" class="headerlink" title="图形化界面"></a>图形化界面</h1><h2 id="AWT"><a href="#AWT" class="headerlink" title="AWT"></a>AWT</h2><h1 id="文件和流"><a href="#文件和流" class="headerlink" title="文件和流"></a>文件和流</h1><h2 id="流"><a href="#流" class="headerlink" title="流"></a>流</h2><ul>
+<li><p>流（stream）是一组有序的数据序列。</p>
+</li>
+<li><p>数据流就是一串连续不断的数据的集合，就像水管里的水流。</p>
+</li>
+<li><p>文件是数据的静态存储形式，而流是指数据传输时的形态</p>
+</li>
+</ul>
+<p>创建文件</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        File f=<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;123.txt&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(f.exists())</span><br><span class="line">                f.delete();</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                f.createNewFile();</span><br><span class="line">                System.out.println(<span class="string">&quot;文件创建成功&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -1566,7 +1574,7 @@
 <h3 id="list常用方法"><a href="#list常用方法" class="headerlink" title="list常用方法"></a>list常用方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">add(<span class="type">int</span> index, Object obj) <span class="comment">//指定索引位置添加对象</span></span><br><span class="line">set(<span class="type">int</span> index, Object obj)<span class="comment">// 替换指定索引位置的对象</span></span><br><span class="line">indexOf(Object obj) <span class="comment">//获得指定对象的最小的索引位置</span></span><br><span class="line">lastIndexOf(Object obj) <span class="comment">//获得指定对象的最大的索引位置</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="linkedlist常用方法"><a href="#linkedlist常用方法" class="headerlink" title="linkedlist常用方法"></a>linkedlist常用方法</h3><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240604170549220.png" alt="image-20240604170549220"></p>
-<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240604171133204.png" alt="image-20240604171133204"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240604171133204.png" alt="image-20240604171133204"></p>
 <h2 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a><strong>Set</strong>集合</h2><ul>
 <li><p>存放于Set集中的对象不按特定方式排序，只是简单地把对象加入集合中，类似于向口袋里放东西。</p>
 </li>
@@ -1596,7 +1604,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//从控制台输入一句英语，统计各单词出现的次数，使用HashMap完成。</span></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">testMap</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		 Scanner sc=<span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		 <span class="comment">//使用 nextLine()可以读一行</span></span><br><span class="line">		 String read=sc.nextLine();</span><br><span class="line">		 <span class="comment">//把一句单词用“ ”分割为一个字符串数组 </span></span><br><span class="line">		 String str[]=read.split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">		 <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;str.length;i++)</span><br><span class="line">			 System.out.println(str[i]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		 <span class="comment">//&lt;单词，出现的次数&gt; 键为单词，值为该单词出现次数 </span></span><br><span class="line">         HashMap&lt;String,Integer&gt; hm=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">         <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;str.length;i++)&#123;</span><br><span class="line">        	 <span class="comment">//如果该单词不存在 ，则新增 </span></span><br><span class="line">        	<span class="keyword">if</span>(!hm.containsKey(str[i]))&#123;</span><br><span class="line">        		hm.put(str[i], <span class="number">1</span>);<span class="comment">//自动装箱</span></span><br><span class="line">        	&#125;<span class="keyword">else</span>&#123; <span class="comment">//如果单词存在则使其次数  +1</span></span><br><span class="line">        		<span class="type">int</span> n=hm.get(str[i]);</span><br><span class="line">        		hm.put(str[i], ++n);</span><br><span class="line">        	&#125;</span><br><span class="line">         &#125;</span><br><span class="line">         System.out.println(<span class="string">&quot;统计单词出现的个数，结果如下：&quot;</span>);</span><br><span class="line"> 		<span class="comment">//hello java hdu hel java haha java </span></span><br><span class="line">       <span class="comment">//hello  1</span></span><br><span class="line">       <span class="comment">//java  3</span></span><br><span class="line">       <span class="comment">//hdu  1</span></span><br><span class="line">       <span class="comment">//hel   1</span></span><br><span class="line">       <span class="comment">//haha  1</span></span><br><span class="line">         <span class="comment">//将集合中的所有键对象保存到Set集合中</span></span><br><span class="line">         Set&lt;String&gt; s=hm.keySet();</span><br><span class="line">         <span class="comment">//遍历Set集合的键值</span></span><br><span class="line">         Iterator&lt;String&gt; it=s.iterator();</span><br><span class="line">         <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">        	 String a=it.next();</span><br><span class="line">        	 <span class="comment">//使用get函数，根据HashMap的键求值</span></span><br><span class="line">        	 System.out.println(a+<span class="string">&quot;=&quot;</span>+hm.get(a));</span><br><span class="line">         &#125;  </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="Treemap"><a href="#Treemap" class="headerlink" title="Treemap"></a>Treemap</h3><p>TreeMap中的映射关系存在一定的顺序</p>
-<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1>]]></content>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1>]]></content>
       <tags>
         <tag>java</tag>
       </tags>
