@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>51单片机 | Jaketmoon の 博客</title><meta name="author" content="Jaketmoon"><meta name="copyright" content="Jaketmoon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="开始智能车之旅前的一小练习，其实在玩过stm32之后才发现51单片机还是非常简单的 基础介绍单片机，英文Micro ControllerUnit，简称MCU内部集成了CPU、RAM、ROM、定时器、中断系统、通讯接口等一系列电脑的常用硬件功能单片机的任务是信息采集(依靠传感器)、处理(依靠CPU)和硬件设备(例如电机，LED等)的控制单片机跟计算机相比，单片机算是一个袖珍版计算机，一个芯片就能构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="51单片机">
+<meta property="og:url" content="http://yourwebsite.com/2024/02/29/51%E5%8D%95%E7%89%87%E6%9C%BA/index.html">
+<meta property="og:site_name" content="Jaketmoon の 博客">
+<meta property="og:description" content="开始智能车之旅前的一小练习，其实在玩过stm32之后才发现51单片机还是非常简单的 基础介绍单片机，英文Micro ControllerUnit，简称MCU内部集成了CPU、RAM、ROM、定时器、中断系统、通讯接口等一系列电脑的常用硬件功能单片机的任务是信息采集(依靠传感器)、处理(依靠CPU)和硬件设备(例如电机，LED等)的控制单片机跟计算机相比，单片机算是一个袖珍版计算机，一个芯片就能构">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-02-29T01:07:27.000Z">
+<meta property="article:modified_time" content="2024-07-25T15:39:56.764Z">
+<meta property="article:author" content="Jaketmoon">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yourwebsite.com/2024/02/29/51%E5%8D%95%E7%89%87%E6%9C%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.11.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '51单片机',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-25 23:39:56'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Jaketmoon の 博客"><span class="site-name">Jaketmoon の 博客</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">51单片机</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-29T01:07:27.000Z" title="发表于 2024-02-29 09:07:27">2024-02-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-25T15:39:56.764Z" title="更新于 2024-07-25 23:39:56">2024-07-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="51单片机"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p> 开始智能车之旅前的一小练习，其实在玩过stm32之后才发现51单片机还是非常简单的</p>
+<h1 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h1><p>单片机，英文Micro ControllerUnit，简称MCU内部集成了CPU、RAM、ROM、定时器、中断系统、通讯接口等一系列电脑的常用硬件功能<br>单片机的任务是信息采集(依靠传感器)、处理(依靠CPU)和硬件设备(例如电机，LED等)的控制单片机跟计算机相比，单片机算是一个袖珍版计算机，一个芯片就能构成完整的计算机系统。但在性能上，与计算机相差甚远，但单片机成本低、体积小、结构简单，在生活和工业控制领域大有所用同时，学习使用单片机是了解计算机原理与结构的最佳选择</p>
+<h2 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h2><p>单片机的使用领域已十分广泛，如智能仪表、实时工控、通讯设备导航系统、家用电器等。各种产品一旦用上了单片机，就能起到使产品升级换代的功效，常在产品名称前冠以形容词“智能型”如智能型洗衣机等</p>
+<h2 id="51单片机"><a href="#51单片机" class="headerlink" title="51单片机"></a>51单片机</h2><p>51单片机是对所有兼容Inte18031指令系统的单片机的统称。该系列单片机的始祖是Intel的8004单片机，后来随着Flash rom技术的发展，8004单片机取得了长足的进展，成为应用最广泛的8位单片机之一，其代表型号是ATMEL公司的AT89系列，它广泛应用于工业测控系统之中。很多公司都有51系列的兼容机型推出，今后很长的一段时间内将占有大量市场。51单片机是基础入门的一个单片机，还是应用最广泛的一种。需要注意的是51系列的单片机一般不具备自编程能力。</p>
+<h2 id="STC89C52单片机"><a href="#STC89C52单片机" class="headerlink" title="STC89C52单片机"></a>STC89C52单片机</h2><p>所属系列:51单片机系列公司:STC公司<br>位数:8位<br>RAM:512字节<br>ROM:8K(Flash)<br>工作频率:12MHz(本开发板使用)</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229091351793.png" alt="image-20240229091351793"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229092111625.png" alt="image-20240229092111625"></p>
+<p> 模块原理图：C:\Users\HUAWEI\Desktop\智能车\51单片机\开发板资料包\HC6800-ES V2.0.zip\HC6800-ES V2.0\开发板原理图</p>
+<h1 id="开始步骤"><a href="#开始步骤" class="headerlink" title="开始步骤"></a>开始步骤</h1><p>打开keil5，新建project，在keilproject中新建项目对应文件夹，进入文件夹命名project保存<img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229104823101.png" alt="image-20240229104823101"></p>
+<p>选择Atmel的AT89c52确定，弹窗选否 </p>
+<p>右键Source Group 1新建c语言文件夹，命名为main。</p>
+<p>头文件#include &lt;REGX52.H&gt;</p>
+<p>编写代码完成之后，点击build，在这之前把创建HEX打开</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229112945649.png" alt="image-20240229112945649"></p>
+<p>stc-isp打开，连接单片机到电脑，选择<strong>正确</strong>的串口</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229113200097.png" alt="image-20240229113200097"></p>
+<p>打开程序文件，选择对应项目文件夹的HEX文件，下载编程，打开单片机开关</p>
+<h2 id="程序为什么要放在while里面"><a href="#程序为什么要放在while里面" class="headerlink" title="程序为什么要放在while里面"></a>程序为什么要放在while里面</h2><p>将程序放在while循环中的目的是为了实现程序的持续执行。</p>
+<p>在嵌入式系统中，程序一般只会被执行一次，然后就会停止。但是在实际的应用中，我们通常需要程序能够持续地执行某些任务或者实时地响应外部的事件。这就需要使用循环来让程序重复执行，以实现持续性的功能。</p>
+<p>在你提供的代码中，将程序放在while循环中，使得程序会不断地检测P3_1口的状态，并根据状态来控制P2_1口的输出。如果P3_1口为低电平（按键按下），则P2_1口输出低电平；如果P3_1口为高电平（按键释放），则P2_1口输出高电平。通过将程序放在while循环中，可以实现对按键状态的实时监测和相应的输出控制。</p>
+<p>总结来说，将程序放在while循环中是为了使程序能够持续地执行，以实现某些功能的持续性、实时性或者循环性。</p>
+<h2 id="C51数据运算"><a href="#C51数据运算" class="headerlink" title="C51数据运算"></a>C51数据运算</h2><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229125637025.png" alt="image-20240229125637025"></p>
+<h1 id="stc-isp工具"><a href="#stc-isp工具" class="headerlink" title="stc-isp工具"></a>stc-isp工具</h1><p>延时计算器：</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229110557257.png" alt="image-20240229110557257"></p>
+<p>把指令集改成Y1，时间改成毫秒,系统频率改为12</p>
+<p>这里可以定时长度，复制代码，在main上面粘贴，添加&lt;INTRINS.H&gt;头文件就可以直接用这个函数了。</p>
+<h1 id="按键操作"><a href="#按键操作" class="headerlink" title="按键操作"></a>按键操作</h1><p>根据开发板原理图，，每个按钮对应如下图</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229123012244.png" alt="image-20240229123012244"></p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240229123418246.png" alt="image-20240229123418246"></p>
+<p>按下K1后亮，松手灭。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;REGX52.H&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(P3_1==<span class="number">0</span>)&#123;</span><br><span class="line">				P2_1=<span class="number">0</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				P2_1=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h2><p>按下松开之后亮                                                              </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;REGX52.H&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> xms)</span>	<span class="comment">//@12.000MHz</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> data i, j;</span><br><span class="line">	<span class="keyword">while</span>(xms)&#123;</span><br><span class="line">		i = <span class="number">2</span>;</span><br><span class="line">		j = <span class="number">239</span>;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (--j);</span><br><span class="line">		&#125; <span class="keyword">while</span> (--i);</span><br><span class="line">		xms--;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(P3_1==<span class="number">0</span>)&#123;</span><br><span class="line">				Delay(<span class="number">20</span>);<span class="comment">//按下与松开时候要delay</span></span><br><span class="line">				<span class="keyword">while</span>(P3_1==<span class="number">0</span>);<span class="comment">//一直按住</span></span><br><span class="line">				Delay(<span class="number">20</span>);</span><br><span class="line">				P2_0=~P2_0;<span class="comment">//取反</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在Delay中终止运行"><a href="#在Delay中终止运行" class="headerlink" title="在Delay中终止运行"></a>在Delay中终止运行</h2><p>之前可能不知道，后来才意识到程序的大部分时间都是在delay中进行的，因此在delay中设置终止条件才是可能的，但是delay中不能用delay消抖，因此我在前面有嵌入了一个delay20ms来专门控制消抖的delay</p>
+<p>按下K1启动流水灯，再按一下关闭。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;REGX52.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;MATH.H&gt;</span></span></span><br><span class="line"><span class="type">int</span> flag=<span class="number">0</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay20ms</span><span class="params">(<span class="type">void</span>)</span>	<span class="comment">//@12.000MHz</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> data i, j;</span><br><span class="line"></span><br><span class="line">	i = <span class="number">234</span>;</span><br><span class="line">	j = <span class="number">115</span>;</span><br><span class="line">	<span class="keyword">do</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span> (--j);</span><br><span class="line">	&#125; <span class="keyword">while</span> (--i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">Delay</span><span class="params">(<span class="type">unsigned</span> <span class="type">int</span> xms)</span>	<span class="comment">//@12.000MHz</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">char</span> data i, j;</span><br><span class="line">	<span class="keyword">while</span>(xms)&#123;</span><br><span class="line">		i = <span class="number">2</span>;</span><br><span class="line">		j = <span class="number">239</span>;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (--j);</span><br><span class="line">		&#125; <span class="keyword">while</span> (--i);</span><br><span class="line">		xms--;</span><br><span class="line">		<span class="keyword">if</span>(P3_1==<span class="number">0</span>)&#123;</span><br><span class="line">			Delay20ms();</span><br><span class="line">			<span class="keyword">while</span>(P3_1==<span class="number">0</span>);</span><br><span class="line">			Delay20ms();</span><br><span class="line">			flag=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">waterfall_light</span><span class="params">()</span>&#123;</span><br><span class="line">	flag=<span class="number">0</span>;</span><br><span class="line">	P2=<span class="number">0xFE</span>;</span><br><span class="line">	Delay(<span class="number">500</span>);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		P2=(P2&lt;&lt;<span class="number">1</span>)+<span class="number">1</span>;</span><br><span class="line">		Delay(<span class="number">500</span>);</span><br><span class="line">		<span class="keyword">if</span>(P2==<span class="number">0x7F</span>)&#123;</span><br><span class="line">			P2=<span class="number">0xFE</span>;</span><br><span class="line">			Delay(<span class="number">500</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">		P2=<span class="number">0xFF</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(P3_1==<span class="number">0</span>)&#123;</span><br><span class="line">				Delay20ms();</span><br><span class="line">				<span class="keyword">while</span>(P3_1==<span class="number">0</span>);</span><br><span class="line">				Delay20ms();</span><br><span class="line">				<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">					waterfall_light();</span><br><span class="line">					<span class="keyword">if</span>(flag==<span class="number">1</span>)&#123;</span><br><span class="line">						P2=<span class="number">0xFF</span>;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					</span><br><span class="line">			&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="模块化编程"><a href="#模块化编程" class="headerlink" title="模块化编程"></a>模块化编程</h1><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240301155542256.png" alt="image-20240301155542256"></p>
+<p>.c文件:函数、变量的定义</p>
+<p>.h文件:可被外部调用的函数、变量的声明<br>任何自定义的变量、函数在调用前必须有定义或声明(同一个.c)使用到的自定义函数的.c文件必须添加到工程参与编译使用到的.h文件必须要放在编译器可寻找到的地方(工程文件夹根目录、安装目录、自定义)</p>
+<p>如果想要在项目文件夹中看到h文件可以右键Source Group，添加已有文件，然后选择全部文件，再add。</p>
+<h1 id="LCD1602"><a href="#LCD1602" class="headerlink" title="LCD1602"></a>LCD1602</h1><p>在课程源码中有函数库，仔细阅读源码，可以发现原理</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240301195138487.png" alt="image-20240301195138487"></p>
+<p>阅读源码要注意的点</p>
+<ul>
+<li><code>brief</code>：简要说明函数的作用或功能。</li>
+<li><code>param</code>：说明函数的参数及其含义。在这个标签后面列出了每个函数参数的名称和说明。</li>
+<li><code>retval</code>：描述函数的返回值的含义或取值范围。</li>
+</ul>
+<h1 id="定时器系统"><a href="#定时器系统" class="headerlink" title="定时器系统"></a>定时器系统</h1><p>作用：可以用于实现软件计时，使程序每隔一段时间实现操作</p>
+<p>可以替代长时间的delay，提高CPU的运行效率和处理速度</p>
+<p>想我之前研究出的在delay中的流水灯，在delay中加入跳出条件会十分麻烦</p>
+<p>有三个定时器，T0，T1，T2，其中T0 and T1 与传统51单片机兼容</p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>STC89C52系列单片机内部设置的两个16位定时器&#x2F;计数器T0和T1都具有计数方式和定时方式两种工作方式。对每个定时器&#x2F;计数器(T0和T1)，在特殊功能寄存器TMOD中都有一控制位一C&#x2F;T来选择TO或T1为定时器还是计数器。定时器&#x2F;计数器的核心部件是一个加法(也有减法)的计数器，其本质是对脉冲进行计数。只是计数脉冲来源不同:如果计数脉冲来自系统时钟，则为定时方式，此时定时器&#x2F;计数器每12个时钟或者每6个时钟得到一个计数脉冲，计数值加1:如果计数脉冲来自单片机外部引脚(TO为P3.4,T1为P3.5)，则为计数方式，每来一个脉冲加1。</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240302104902702.png" alt="image-20240302104902702"></p>
+<p>具体可以查看手册第七章 C:\Users\HUAWEI\Desktop\智能车\51单片机\课件及程序源码\相关资料.zip\相关资料</p>
+<h3 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h3><p>​	中断系统是为使CPU具有对外界紧急事件的实时处理能力而设置的。当中央处理机CPU正在处理某件事的时候外界发生了紧急事件请求，要求CPU暂停当前的工作，转而去处理这个紧急事件，处理完以后，再回到原来被中断的地方，继续原来的工作，这样的过程称为中断。实现这种功能的部件称为中断系统，请示CPU中断的请求源称为中断源。微型机的中断系统一般允许多个中断源，当几个中断源同时向CPU请求中断，要求为它服务的时候，这就存在CPU优先响应哪一个中断源请求的问题。通常根据中断源的轻重缓急排队，优先处理最紧急事件的中断请求源，即规定每一个中断源有一个优先级别。CPU总是先响应优先级别最高的中断请求。<br>​	当CPU正在处理一个中断源请求的时候(执行相应的中断服务程序)，发生了另外一个优先级比它还高的中断源请求。如果CPU能够暂停对原来中断源的服务程序，转而去处理优先级更高的中断请求源，处理完以后，再回到原低级中断服务程序，这样的过程称为中断嵌套。这样的中断系统称为多级中断系统，没有中断嵌套功能的中断系统称为单级中断系统。</p>
+<p>有时候，中断系统类似于一种多线程，比如在其他任务进行的过程中sec++，最好不要把复杂的任务放在中断函数当中。</p>
+<h2 id="工作模式"><a href="#工作模式" class="headerlink" title="工作模式"></a>工作模式</h2><p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240301210640494.png" alt="image-20240301210640494"></p>
+<h2 id="流水系统"><a href="#流水系统" class="headerlink" title="流水系统"></a>流水系统</h2><p>定时器配置，尤其注意右上角的配置<img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240302120301463.png" alt="image-20240302120301463"></p>
+<p><code>	AUXR &amp;= 0x7F;			//定时器时钟12T模式</code>记得把这句删掉</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Timer0_Init</span><span class="params">(<span class="type">void</span>)</span>		<span class="comment">//1毫秒@12.000MHz</span></span><br><span class="line">&#123;</span><br><span class="line">	TMOD &amp;= <span class="number">0xF0</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TMOD |= <span class="number">0x01</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TL0 = <span class="number">0x18</span>;				<span class="comment">//设置定时初始值</span></span><br><span class="line">	TH0 = <span class="number">0xFC</span>;				<span class="comment">//设置定时初始值</span></span><br><span class="line">	TF0 = <span class="number">0</span>;				<span class="comment">//清除TF0标志</span></span><br><span class="line">	TR0 = <span class="number">1</span>;				<span class="comment">//定时器0开始计时</span></span><br><span class="line">	ET0=<span class="number">1</span>; <span class="comment">//中断配置</span></span><br><span class="line">	EA=<span class="number">1</span>;</span><br><span class="line">	PT0=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>定时器初始化 (<code>Timer0_Init</code>) 函数</strong>:</p>
+<ol>
+<li><code>TMOD &amp;= 0xF0;</code>：清除TMOD寄存器的低四位（用于控制定时器0的模式）。这是为了将定时器0的工作模式设置为模式1，即16位计数器模式。<code>&amp;= 0xF0</code>操作确保了TMOD寄存器的高四位（控制定时器1）保持不变。</li>
+<li><code>TMOD |= 0x01;</code>：在清除低四位之后，通过<code>|= 0x01</code>给定时器0设置了工作模式1。</li>
+<li><code>TL0 = 0x18;</code> 及 <code>TH0 = 0xFC;</code>：设置定时器的初始计数值。定时器的计数由TH0和TL0寄存器组成的16位数值递增，当这个值从<code>0xFC18</code>递增到<code>0xFFFF</code>后，会溢出并从<code>0x0000</code>开始重新计数，此时定时器0的溢出标志TF0会被置位。</li>
+<li><code>TF0 = 0;</code>：清除定时器溢出标志TF0，以确保它不会影响定时器的启动。</li>
+<li><code>TR0 = 1;</code>：设置TR0位，使定时器0开始计时。</li>
+<li><code>ET0=1;</code>：使能定时器0的中断。</li>
+<li><code>EA=1;</code>：使能（或允许）全局中断。</li>
+<li><code>PT0=0;</code>：设置定时器0中断的优先级为低。</li>
+</ol>
+<p>·其中TL0 and TH0的设置会决定一定时间内中断的次数，上面的设置使下面的中断器一毫秒中断一次，也就是一毫秒执行一遍下面的程序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Timer0_Routine</span><span class="params">()</span> interrupt 1<span class="comment">//中断函数</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">static</span> <span class="type">unsigned</span> <span class="type">int</span> T0Count;<span class="comment">//静态，本函数引用，退出函数时不丢失数据</span></span><br><span class="line">	TL0 =<span class="number">0x18</span>;<span class="comment">//设定定时初值</span></span><br><span class="line">	TH0=<span class="number">0xFC</span>;</span><br><span class="line">	T0Count++;</span><br><span class="line">	<span class="keyword">if</span>(T0Count&gt;<span class="number">1000</span>)&#123;</span><br><span class="line">		T0Count=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title="&lt;INTRINS.H&gt;"></a>&lt;INTRINS.H&gt;</h2><p><code>&lt;INTRINS.H&gt;</code> 是一个针对 Keil C 编译器的头文件，它为 8051 微控制器提供了一系列的内置函数。这些函数通常是一些简单的指令，它们是用汇编语言编写的，可以直接访问 CPU 的某些特殊功能，比如 NOP（无操作）、开关中断等。它们在嵌入式系统的编程中非常有用，因为这些操作通常是实现硬件控制和优化代码性能的关键。</p>
+<p>以下是一些常见的 <code>&lt;INTRINS.H&gt;</code> 中定义的内置函数及其用法：</p>
+<ol>
+<li><code>_nop_()</code>：执行一个无操作（NOP）指令，基本上是用来插入一个CPU周期的延迟。</li>
+<li><code>_cror_()</code>：循环右移操作，将寄存器内容循环右移指定的位数。</li>
+<li><code>_crol_()</code>：循环左移操作，将寄存器内容循环左移指定的位数。</li>
+<li><code>_get_()</code>：从SFR（特殊功能寄存器）中读取值。</li>
+<li><code>_put_()</code>：向SFR写入值。</li>
+<li><code>_clrbit_()</code>：清除（置0）特定位。</li>
+<li><code>_setbit_()</code>：设置（置1）特定位。</li>
+<li><code>_testbit_()</code>：测试特定位是否被设置。</li>
+<li><code>_pop_()</code>：从栈中弹出一个字节。</li>
+<li><code>_push_()</code>：向栈中压入一个字节。</li>
+<li><code>_disgint_()</code>：禁用全局中断。</li>
+<li><code>_enaint_()</code>：启用全局中断。</li>
+<li><code>_bset_()</code>：置位一个字节中的特定位。</li>
+<li><code>_bclr_()</code>：清除一个字节中的特定位。</li>
+<li><code>_bdset_()</code>：置位一个位地址变量。</li>
+<li><code>_bdclr_()</code>：清除一个位地址变量。</li>
+<li><code>_bp_()</code>：置位一个位地址变量，并在几个机器周期后自动清除。</li>
+</ol>
+<p>具体的函数内容要看头文件中函数的参数</p>
+<h1 id="蜂鸣器"><a href="#蜂鸣器" class="headerlink" title="蜂鸣器"></a>蜂鸣器</h1><p>蜂鸣器是一种将电信号转换为声音信号的器件，常用来产生设备的按键音、报警音等提示信号蜂鸣器按驱动方式可分为有源蜂鸣器和无源蜂鸣器<br>有源蜂鸣器:内部自带振荡源，将正负极接上直流电压即可持续发声，频率固定<br>无源蜂鸣器:内部不带振荡源，需要控制器提供振荡脉冲才可发声调整提供振荡脉冲的频率，可发出不同频率的声音</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240302160251482.png" alt="image-20240302160251482"></p>
+<p>P2_5控制蜂鸣器，注意新版的不同</p>
+<h1 id="LED呼吸灯"><a href="#LED呼吸灯" class="headerlink" title="LED呼吸灯"></a>LED呼吸灯</h1><p>原理：通过延长明暗的时间来调整LED的亮度</p>
+<p><img src="http://typora-images-bed.oss-cn-beijing.aliyuncs.com/img/image-20240303130257353.png" alt="image-20240303130257353"></p>
+<h1 id="重要提醒"><a href="#重要提醒" class="headerlink" title="重要提醒"></a>重要提醒</h1><p>不要再中断器里面添加循环</p>
+<p>中断器时间设置太快会导致按键延迟</p>
+<h1 id="AD模数转换（Analog-to-Digital）"><a href="#AD模数转换（Analog-to-Digital）" class="headerlink" title="AD模数转换（Analog to Digital）"></a>AD模数转换（Analog to Digital）</h1><p>首先要明白的是，ADC的模块并不属于单片机，因此他需要SPI传输协议来与单片机相互传输数据</p>
+<h2 id="ADC模块"><a href="#ADC模块" class="headerlink" title="ADC模块"></a>ADC模块</h2><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240305191006215.png" alt="image-20240305191006215"></p>
+<p><strong>CS (Chip Select)</strong>: CS信号用于选择或激活外部ADC芯片。当多个外设通过SPI（串行外设接口）或其他通信协议与单片机连接时，CS信号可以用来指定当前通信的是哪一个外设。<strong>在通信开始前，CS信号通常被拉低，以选中特定的ADC芯片；通信结束后，CS信号被拉高，以取消选中。</strong></p>
+<p><strong>DIN (Data Input)</strong>: DIN是<strong>数据输入</strong>信号线，用于从单片机向ADC芯片发送数据或命令。在ADC转换过程中，DIN可能用于配置ADC的工作模式、启动转换过程或选择</p>
+<p>DOUT：<strong>数据输出</strong>信号。这是从外部ADC模块传输到单片机的数据路径。</p>
+<p><strong>DCLK（Data Clock）</strong>：通常指的是数据时钟信号，在与外部ADC模块通信时用于同步数据的传输。对于没有内置ADC模块的51单片机系统，当使用串行通信接口（如SPI）与外部ADC进行通信时，DCLK信号是至关重要的。</p>
+<p>在串行通信协议（如SPI）中，单片机通过DIN（Data Input）线向ADC发送指令，ADC处理这些指令后，可能需要将转换结果或其他数据通过DOUT线发送回单片机。在SPI协议中，DOUT对应的可能是MISO（Master In Slave Out）信号，即主设备输入、从设备输出。</p>
+<p>通信时，单片机会提供DCLK（Data Clock）信号，用于同步数据的读取。在DCLK的每个时钟周期，数据会从ADC的DOUT引脚移位出来，单片机通过其对应的接收引脚来读取这些数据。这个过程通常在单片机的CS（Chip Select）信号激活ADC芯片后进行。</p>
+<p>在SPI通信中，数据的接收和发送都是同步进行的，即使在单片机发送配置指令给ADC时，ADC的DOUT线也可能在每个DCLK时钟周期输出数据，但这些数据通常在配置阶段不被单片机使用。当ADC开始数据转换并且单片机需要读取结果时，DOUT线上传输的数据才是重要的，单片机会在适当的时钟边沿捕获这些数据。</p>
+<h2 id="XPT2046"><a href="#XPT2046" class="headerlink" title="XPT2046"></a>XPT2046</h2><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240305192525700.png" alt="image-20240305192525700"></p>
+<p>SPI通信：</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240305185934224.png" alt="image-20240305185934224"></p>
+<p>CS:我想和谁通信，我就可以选中谁</p>
+<p>首先片选，其次DCLK上升沿输入数据，下降沿输出数据，同时DIN和DOUT同时工作。这样经历8位之后就会与单片机的八位的寄存器进行交换，就可以实现通信了。之后就可以连续不断的发送数据了，通信之后再把CS拉高就好了</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240305194610081.png" alt="image-20240305194610081"></p>
+<h3 id="控制字"><a href="#控制字" class="headerlink" title="控制字"></a>控制字</h3><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240306155840710.png" alt="image-20240306155840710"></p>
+<p>SERDFR：在此开发板内X-Y-直接接地，所以直接使用单端模式</p>
+<p>PD1PD0：如果PD1是1，内部参考电压2.5，电位器一半刻度就会满，因此最好选择外部电压0.PD0.</p>
+<p>在这个程序里面的command：1 A2A1A0 1&#x2F;0 1 0 0</p>
+<p>但SERDFR为1时</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240306163207908.png" alt="image-20240306163207908"></p>
+<p>XP就是X+（positive）测变阻器电压 +in表示就可以测什么，</p>
+<p>VBAT测电池电压</p>
+<p>当SERDFR为0时</p>
+<h1 id="串口通信"><a href="#串口通信" class="headerlink" title="串口通信"></a>串口通信</h1><p>串口是一种应用十分广泛的通讯接口，串口成本低、容易使用、通信线路简单，可实现两个设备的互相通信。I单片机的串口可以使单片机与单片机、单片机与电脑、单片机与各式各样的模块互相通信，极大的扩展了单片机的应用范围，增强了单片机系统的硬件实力。</p>
+<p>51单片机内部自带UART(UniversalAsynchronous ReceiverTransmitter，通用异步收发器)，可实现单片机的串口通信</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310123901339.png" alt="image-20240310123901339"></p>
+<h2 id="UART"><a href="#UART" class="headerlink" title="UART"></a>UART</h2><p>51单片机（如Intel的8051系列单片机）通常内置有一个UART（Universal Asynchronous Receiver&#x2F;Transmitter，通用异步收发传输器）模块，这个模块使得单片机能够通过串行通信与其他设备进行数据交换。</p>
+<p>UART通信标准是基于异步串行通信协议，它不需要时钟同步信号，因为发送方和接收方各自使用独立的时钟，只要两者的波特率（数据传输速率）匹配，就能够正确地进行数据传输。</p>
+<p>51单片机的UART特点：</p>
+<ol>
+<li><strong>异步通信</strong>：数据的发送和接收是异步的，即没有单独的时钟线来同步发送和接收方。</li>
+<li><strong>可编程波特率</strong>：UART模块可以通过编程来设置波特率，波特率是通过定时器或直接配置UART的特殊功能寄存器来实现。</li>
+<li><strong>起始位和停止位</strong>：每个数据字节通常以一个起始位开始，后跟8个数据位，然后是可选的奇偶校验位，最后是一个或两个停止位。</li>
+<li><strong>全双工通信</strong>：51单片机的UART允许同时进行发送和接收操作，即可以进行全双工通信。</li>
+<li><strong>寄存器</strong>：51单片机的UART通信主要通过几个特殊功能寄存器来控制，例如SCON（串行控制寄存器），用于控制UART模式、波特率以及接收传输的控制；SBUF（串行数据缓冲器），用于存储正在发送或接收的数据字节。</li>
+<li><strong>中断</strong>：UART模块通常有与之相关的中断，当发送或接收完成时，可以触发中断来通知CPU处理数据。</li>
+<li><strong>串行通信引脚</strong>：51单片机的UART使用专门的引脚，通常是P3.0（RXD）和P3.1（TXD）作为接收和发送数据的线路。</li>
+<li><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310124935283.png" alt="image-20240310124935283"></li>
+</ol>
+<p>一般采用模式一</p>
+<h2 id="开始（发送数据到电脑）"><a href="#开始（发送数据到电脑）" class="headerlink" title="开始（发送数据到电脑）"></a>开始（发送数据到电脑）</h2><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310122011821.png" alt="image-20240310122011821"></p>
+<p>还有一个波特率要改为4800</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310125344262.png" alt="image-20240310125344262"></p>
+<p>我们先把八位的数据发到上面的SBUF上，然后通过控制门来到达TXD，然后从RXD接受数据，通过移位寄存器来到下面的SBUF上，想要这个数据直接把数据的缓存读出来就行了。每次发送一位数据的时候，就会触发中断函数。</p>
+<h3 id="配置到模式一的工作状态"><a href="#配置到模式一的工作状态" class="headerlink" title="配置到模式一的工作状态"></a>配置到模式一的工作状态</h3><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310140452047.png" alt="image-20240310140452047"></p>
+<p>发送数据无需中断的相关的寄存器，所以IE IPH IP不用配置</p>
+<h4 id="SCON"><a href="#SCON" class="headerlink" title="SCON"></a>SCON</h4><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310134554906.png" alt="image-20240310134554906"></p>
+<p>SM1&#x2F;SM0:0&#x2F;1</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310134946776.png" alt="image-20240310134946776"></p>
+<p>REN：</p>
+<p>允许&#x2F;禁止串行接收控制位。由软件置位REN，即REN&#x3D;1为允许串行接收状态，可启动串行接收器RxD，开始接收信息。软件复位REN，即REN&#x3D;0，则禁止接收。接受电脑数据设为1，电脑接受数据设为0.</p>
+<p>TB8&#x2F;RB8：由于是接受第九位数据，所以我们不管它。</p>
+<p>TI：发送中断请求标志位。在方式0，当串行发送数据第8位结束时，由内部硬件自动置位，即TI&#x3D;1，向主机请求中断，响应中断后必须用软件复位，即T&#x3D;0。在其他方式中，则在停止位开始发送时由内部硬件置位，必须用软件复位。可以用于检测数据是否发送完。</p>
+<p>初始化配置：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">UART_Init</span><span class="params">()</span>&#123;</span><br><span class="line">	SCON=<span class="number">0x40</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310135916427.png" alt="image-20240310135916427"></p>
+<h4 id="PCON电源控制寄存器"><a href="#PCON电源控制寄存器" class="headerlink" title="PCON电源控制寄存器"></a>PCON电源控制寄存器</h4><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310140427507.png" alt="image-20240310140427507"></p>
+<h4 id="配置波特率"><a href="#配置波特率" class="headerlink" title="配置波特率"></a>配置波特率</h4><p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310143951516.png" alt="image-20240310143951516"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">UART_Init</span><span class="params">()</span>&#123;</span><br><span class="line">	SCON=<span class="number">0x40</span>;<span class="comment">//这个是自己算的</span></span><br><span class="line">	</span><br><span class="line">	PCON |= <span class="number">0x80</span>;		<span class="comment">//使能波特率倍速位SMOD</span></span><br><span class="line">	TMOD &amp;= <span class="number">0x0F</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TMOD |= <span class="number">0x20</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TL1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时初始值</span></span><br><span class="line">	TH1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时重载值</span></span><br><span class="line">	ET1 = <span class="number">0</span>;			<span class="comment">//禁止定时器中断</span></span><br><span class="line">	TR1 = <span class="number">1</span>;			<span class="comment">//定时器1开始计时</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="发送数据到电脑上"><a href="#发送数据到电脑上" class="headerlink" title="发送数据到电脑上"></a>发送数据到电脑上</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">UART_SendByte</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Byte)</span>&#123;</span><br><span class="line">	SBUF=Byte;<span class="comment">//由于SBUF在左边，所以是在写数据</span></span><br><span class="line">	<span class="keyword">while</span>(TI==<span class="number">0</span>);<span class="comment">//检测TI等于1表示读完了数据</span></span><br><span class="line">	TI=<span class="number">0</span>;<span class="comment">//要手动重置TI</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="UART的模块化文件"><a href="#UART的模块化文件" class="headerlink" title="UART的模块化文件"></a>UART的模块化文件</h3><h4 id="UART-c"><a href="#UART-c" class="headerlink" title="UART.c"></a>UART.c</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;REGX52.H&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">UART_Init</span><span class="params">()</span>&#123;</span><br><span class="line">	SCON=<span class="number">0x40</span>;</span><br><span class="line">	</span><br><span class="line">	PCON |= <span class="number">0x80</span>;		<span class="comment">//使能波特率倍速位SMOD</span></span><br><span class="line">	TMOD &amp;= <span class="number">0x0F</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TMOD |= <span class="number">0x20</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TL1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时初始值</span></span><br><span class="line">	TH1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时重载值</span></span><br><span class="line">	ET1 = <span class="number">0</span>;			<span class="comment">//禁止定时器中断</span></span><br><span class="line">	TR1 = <span class="number">1</span>;			<span class="comment">//定时器1开始计时</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">UART_SendByte</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Byte)</span>&#123;</span><br><span class="line">	SBUF=Byte;<span class="comment">//由于SBUF在左边，所以是在写数据</span></span><br><span class="line">	<span class="keyword">while</span>(TI==<span class="number">0</span>);<span class="comment">//检测TI等于1表示读完了数据</span></span><br><span class="line">	TI=<span class="number">0</span>;<span class="comment">//要手动重置TI</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="UART-h"><a href="#UART-h" class="headerlink" title="UART.h"></a>UART.h</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> __UART_H__</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __UART_H__</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">UART_Init</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">UART_SendByte</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> Byte)</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="电脑控制LED"><a href="#电脑控制LED" class="headerlink" title="电脑控制LED"></a>电脑控制LED</h2><p>因为我们不知道电脑是什么时候发送数据的，所以在中断系统要一直检测，需要配置中断器，在中断函数里处理数据</p>
+<h3 id="改造Init函数"><a href="#改造Init函数" class="headerlink" title="改造Init函数"></a>改造Init函数</h3><p>把REN改为1</p>
+<p>SCON&#x3D;0x50</p>
+<p>要配置IE IPH IP</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">UART_Init</span><span class="params">()</span>&#123;</span><br><span class="line">	SCON=<span class="number">0x50</span>;</span><br><span class="line">	</span><br><span class="line">	PCON |= <span class="number">0x80</span>;		<span class="comment">//使能波特率倍速位SMOD</span></span><br><span class="line">	TMOD &amp;= <span class="number">0x0F</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TMOD |= <span class="number">0x20</span>;			<span class="comment">//设置定时器模式</span></span><br><span class="line">	TL1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时初始值</span></span><br><span class="line">	TH1 = <span class="number">0xF4</span>;			<span class="comment">//设置定时重载值</span></span><br><span class="line">	ET1 = <span class="number">0</span>;			<span class="comment">//禁止定时器中断</span></span><br><span class="line">	TR1 = <span class="number">1</span>;			<span class="comment">//定时器1开始计时</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	EA=<span class="number">1</span>;		<span class="comment">//中断函数</span></span><br><span class="line">	ES=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在main函数里面的中断函数要加上终端号码</p>
+<p><img src="C:\Users\HUAWEI\AppData\Roaming\Typora\typora-user-images\image-20240310152917780.png" alt="image-20240310152917780"></p>
+<p>这个地方是interrupt 4</p>
+<p>串口在接受到数据之后，硬件会自动把R1&#x3D;1，R1或者T1&gt;&#x3D;1，那么就会触发中断，进而可以在中断器里面接收到数据。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>P3_6与P3^6有什么区别</p>
+<p>PWM比较数不能是小数？</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yourwebsite.com">Jaketmoon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yourwebsite.com/2024/02/29/51%E5%8D%95%E7%89%87%E6%9C%BA/">http://yourwebsite.com/2024/02/29/51%E5%8D%95%E7%89%87%E6%9C%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yourwebsite.com" target="_blank">Jaketmoon の 博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/04/java%E5%9F%BA%E7%A1%80/" title="java基础"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">java基础</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/16/docker%E4%BD%BF%E7%94%A8%E6%95%99%E5%AD%A6/" title="docker使用教学"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">docker使用教学</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/04/STM32/" title="STM32库函数学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-04</div><div class="title">STM32库函数学习</div></div></a></div><div><a href="/2024/07/15/mm32%E5%AD%A6%E4%B9%A0/" title="mm32学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-07-15</div><div class="title">mm32学习</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jaketmoon</div><div class="author-info__description">YOU WANT TO PLAY? LET'S PLAY!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">基础介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E9%A2%86%E5%9F%9F"><span class="toc-number">1.1.</span> <span class="toc-text">应用领域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#51%E5%8D%95%E7%89%87%E6%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">51单片机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#STC89C52%E5%8D%95%E7%89%87%E6%9C%BA"><span class="toc-number">1.3.</span> <span class="toc-text">STC89C52单片机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">开始步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%94%BE%E5%9C%A8while%E9%87%8C%E9%9D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">程序为什么要放在while里面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C51%E6%95%B0%E6%8D%AE%E8%BF%90%E7%AE%97"><span class="toc-number">2.2.</span> <span class="toc-text">C51数据运算</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stc-isp%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">stc-isp工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">按键操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96"><span class="toc-number">4.1.</span> <span class="toc-text">按键消抖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Delay%E4%B8%AD%E7%BB%88%E6%AD%A2%E8%BF%90%E8%A1%8C"><span class="toc-number">4.2.</span> <span class="toc-text">在Delay中终止运行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">模块化编程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LCD1602"><span class="toc-number">6.</span> <span class="toc-text">LCD1602</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">定时器系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">7.1.</span> <span class="toc-text">工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.1.1.</span> <span class="toc-text">中断系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="toc-number">7.2.</span> <span class="toc-text">工作模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.3.</span> <span class="toc-text">流水系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.4.</span> <span class="toc-text">&lt;INTRINS.H&gt;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="toc-number">8.</span> <span class="toc-text">蜂鸣器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LED%E5%91%BC%E5%90%B8%E7%81%AF"><span class="toc-number">9.</span> <span class="toc-text">LED呼吸灯</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%8F%90%E9%86%92"><span class="toc-number">10.</span> <span class="toc-text">重要提醒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AD%E6%A8%A1%E6%95%B0%E8%BD%AC%E6%8D%A2%EF%BC%88Analog-to-Digital%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">AD模数转换（Analog to Digital）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ADC%E6%A8%A1%E5%9D%97"><span class="toc-number">11.1.</span> <span class="toc-text">ADC模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XPT2046"><span class="toc-number">11.2.</span> <span class="toc-text">XPT2046</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%AD%97"><span class="toc-number">11.2.1.</span> <span class="toc-text">控制字</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1"><span class="toc-number">12.</span> <span class="toc-text">串口通信</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#UART"><span class="toc-number">12.1.</span> <span class="toc-text">UART</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%EF%BC%88%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%88%B0%E7%94%B5%E8%84%91%EF%BC%89"><span class="toc-number">12.2.</span> <span class="toc-text">开始（发送数据到电脑）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%88%B0%E6%A8%A1%E5%BC%8F%E4%B8%80%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81"><span class="toc-number">12.2.1.</span> <span class="toc-text">配置到模式一的工作状态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#SCON"><span class="toc-number">12.2.1.1.</span> <span class="toc-text">SCON</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PCON%E7%94%B5%E6%BA%90%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">12.2.1.2.</span> <span class="toc-text">PCON电源控制寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%B3%A2%E7%89%B9%E7%8E%87"><span class="toc-number">12.2.1.3.</span> <span class="toc-text">配置波特率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%88%B0%E7%94%B5%E8%84%91%E4%B8%8A"><span class="toc-number">12.2.2.</span> <span class="toc-text">发送数据到电脑上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UART%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8C%96%E6%96%87%E4%BB%B6"><span class="toc-number">12.2.3.</span> <span class="toc-text">UART的模块化文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UART-c"><span class="toc-number">12.2.3.1.</span> <span class="toc-text">UART.c</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UART-h"><span class="toc-number">12.2.3.2.</span> <span class="toc-text">UART.h</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%84%91%E6%8E%A7%E5%88%B6LED"><span class="toc-number">12.3.</span> <span class="toc-text">电脑控制LED</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%B9%E9%80%A0Init%E5%87%BD%E6%95%B0"><span class="toc-number">12.3.1.</span> <span class="toc-text">改造Init函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">问题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/15/mm32%E5%AD%A6%E4%B9%A0/" title="mm32学习">mm32学习</a><time datetime="2024-07-15T07:28:12.000Z" title="发表于 2024-07-15 15:28:12">2024-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/13/grpc/" title="grpc入门">grpc入门</a><time datetime="2024-07-13T03:21:49.000Z" title="发表于 2024-07-13 11:21:49">2024-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/06/%E8%AF%86%E5%88%AB%E4%B8%8D%E8%89%AF%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91/" title="利用huggingface处理nlp任务">利用huggingface处理nlp任务</a><time datetime="2024-07-06T05:55:29.000Z" title="发表于 2024-07-06 13:55:29">2024-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/18/casbin/" title="casbin模型">casbin模型</a><time datetime="2024-05-18T03:18:18.000Z" title="发表于 2024-05-18 11:18:18">2024-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/06/JWT/" title="JWT">JWT</a><time datetime="2024-05-06T03:14:54.000Z" title="发表于 2024-05-06 11:14:54">2024-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Jaketmoon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.11.0"></script><script src="/js/main.js?v=4.11.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CSS介绍 | Jaketmoon の 博客</title><meta name="author" content="Jaketmoon"><meta name="copyright" content="Jaketmoon"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简介CSS（Cascading Style Sheets）是一种样式表语言，用于描述HTML或XML文档的呈现。它使得开发者能够控制网页的布局、颜色、字体和动画等方面的外观。CSS 提高了内容与表现的分离程度，能够使样式在多个页面中重用，从而减少了代码量并提高了网站的维护性。开发者可以通过类、ID 和其他选择器来应用样式，而且可以利用层叠和继承规则来精细控制规则的应用。随着CSS3和其后续更新的推">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS介绍">
+<meta property="og:url" content="http://yourwebsite.com/2024/04/22/CSS%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Jaketmoon の 博客">
+<meta property="og:description" content="简介CSS（Cascading Style Sheets）是一种样式表语言，用于描述HTML或XML文档的呈现。它使得开发者能够控制网页的布局、颜色、字体和动画等方面的外观。CSS 提高了内容与表现的分离程度，能够使样式在多个页面中重用，从而减少了代码量并提高了网站的维护性。开发者可以通过类、ID 和其他选择器来应用样式，而且可以利用层叠和继承规则来精细控制规则的应用。随着CSS3和其后续更新的推">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-04-22T15:35:49.000Z">
+<meta property="article:modified_time" content="2024-04-24T01:57:32.000Z">
+<meta property="article:author" content="Jaketmoon">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yourwebsite.com/2024/04/22/CSS%E4%BB%8B%E7%BB%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.11.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS介绍',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-24 09:57:32'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Jaketmoon の 博客"><span class="site-name">Jaketmoon の 博客</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSS介绍</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-22T15:35:49.000Z" title="发表于 2024-04-22 23:35:49">2024-04-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-24T01:57:32.000Z" title="更新于 2024-04-24 09:57:32">2024-04-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSS介绍"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>CSS（Cascading Style Sheets）是一种样式表语言，用于描述HTML或XML文档的呈现。它使得开发者能够控制网页的布局、颜色、字体和动画等方面的外观。CSS 提高了内容与表现的分离程度，能够使样式在多个页面中重用，从而减少了代码量并提高了网站的维护性。开发者可以通过类、ID 和其他选择器来应用样式，而且可以利用层叠和继承规则来精细控制规则的应用。随着CSS3和其后续更新的推出，CSS也引入了响应式设计和动画等先进特性，使得创建现代、交互式的网页变得更加容易。</p>
+<h1 id="改变颜色以及与html文件连接"><a href="#改变颜色以及与html文件连接" class="headerlink" title="改变颜色以及与html文件连接"></a>改变颜色以及与html文件连接</h1><h2 id="颜色的优先级"><a href="#颜色的优先级" class="headerlink" title="颜色的优先级"></a>颜色的优先级</h2><p>在selector中</p>
+<p>inline的写法&gt;id&gt;class&gt;elements的优先级来显示</p>
+<h4 id="inline（内联样式）"><a href="#inline（内联样式）" class="headerlink" title="inline（内联样式）"></a>inline（内联样式）</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&quot;color: black&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="id（id选择器）"><a href="#id（id选择器）" class="headerlink" title="id（id选择器）"></a>id（id选择器）</h4><p>HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;heading&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#heading</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="class（类选择器）"><a href="#class（类选择器）" class="headerlink" title="class（类选择器）"></a>class（类选择器）</h4><p>html:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>css:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.blue</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="element（元素选择器）"><a href="#element（元素选择器）" class="headerlink" title="element（元素选择器）"></a>element（元素选择器）</h4><p>如果我们想直接在html中改变h1颜色</p>
+<p>在head中写这个</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">h1</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果要分文件使用element来改变颜色</p>
+<p>新建一个styles.css文件在同一文件夹下面，我们可以通过这个文件更改html中h1的颜色字体</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: chartreuse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在html的head中加入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles<span class="selector-class">.css</span>&quot;&gt;	</span><br></pre></td></tr></table></figure>
+
+<p><strong>需要注意的是，如果在两个优先级相同的渲染下，颜色渲染是从上到下的，所以最head下面的颜色的定义是页面颜色的最终定义</strong></p>
+<h2 id="调色方式"><a href="#调色方式" class="headerlink" title="调色方式"></a>调色方式</h2><p>在网页设计中，颜色是用来增强用户体验的重要元素之一。选择正确的颜色和调色方式对于设计师来说至关重要。以下是几种常用的调色方式：</p>
+<h3 id="RGB"><a href="#RGB" class="headerlink" title="RGB"></a>RGB</h3><p>RGB是一种颜色模式，它基于光的三原色：红色（Red）、绿色（Green）、蓝色（Blue）。每种颜色均通过一个介于0到255的值来表示，其中0代表最低亮度（无光），255代表最高亮度（全亮）。</p>
+<p>示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">/* 红色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>); <span class="comment">/* 绿色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>); <span class="comment">/* 蓝色 */</span></span><br></pre></td></tr></table></figure>
+
+<p>同时需要注意的是，可以在最后加上最后一个元素a表示透明度，取值范围：0~1，0表示完全透明。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>,<span class="number">0.5</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="十六进制颜色码"><a href="#十六进制颜色码" class="headerlink" title="十六进制颜色码"></a>十六进制颜色码</h3><p>十六进制颜色码是另一种在网页中设置颜色的方法。这种格式以<code>#</code>符号开始，后面跟着六个字符，由0-9的数字和A-F的字母组成。与RGB类似，十六进制颜色码也包含红、绿、蓝三种颜色的值，每种颜色由两个字符表示。</p>
+<p>示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: <span class="number">#FF0000</span>; <span class="comment">/* 红色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#00FF00</span>; <span class="comment">/* 绿色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="number">#0000FF</span>; <span class="comment">/* 蓝色 */</span></span><br></pre></td></tr></table></figure>
+
+<p>也可以在加上最后两位来表示透明度，范围为00~FF</p>
+<h3 id="颜色关键字"><a href="#颜色关键字" class="headerlink" title="颜色关键字"></a>颜色关键字</h3><p>示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: red; <span class="comment">/* 红色 */</span></span><br><span class="line"><span class="attribute">color</span>: green; <span class="comment">/* 绿色 */</span></span><br><span class="line"><span class="attribute">color</span>: blue; <span class="comment">/* 蓝色 */</span></span><br></pre></td></tr></table></figure>
+
+<p>使用颜色关键字是编写CSS时最简单直接的方法，但它提供的颜色选择也是最有限的。</p>
+<h3 id="HSLA"><a href="#HSLA" class="headerlink" title="HSLA"></a>HSLA</h3><p>HSLA是HSL颜色模式的扩展，它增加了Alpha透明度通道。Alpha值定义了颜色的透明度，范围从0.0（完全透明）到1.0（完全不透明）。这使得设计师能够设置颜色的不透明度，为元素创建更丰富和更有层次的视觉效果。</p>
+<p>示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">color</span>: <span class="built_in">hsla</span>(<span class="number">0</span>, <span class="number">100%</span>, <span class="number">50%</span>, <span class="number">1</span>); <span class="comment">/* 不透明的红色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="built_in">hsla</span>(<span class="number">120</span>, <span class="number">100%</span>, <span class="number">50%</span>, <span class="number">0.5</span>); <span class="comment">/* 50%透明度的绿色 */</span></span><br><span class="line"><span class="attribute">color</span>: <span class="built_in">hsla</span>(<span class="number">240</span>, <span class="number">100%</span>, <span class="number">50%</span>, <span class="number">0.3</span>); <span class="comment">/* 30%透明度的蓝色 */</span></span><br></pre></td></tr></table></figure>
+
+<p>HSLA颜色定义中的四个参数含义如下：</p>
+<ul>
+<li><strong>色相（Hue）</strong>: 色相（Hue）代表色轮上的一个点，其中0度是红色，120度是绿色，240度是蓝色.</li>
+<li><strong>饱和度（Saturation）</strong>:饱和度（Saturation）表示颜色的强度或纯度，0% 是灰色，100% 是最鲜亮的颜色。</li>
+<li><strong>亮度（Lightness）</strong>:亮度（Lightness）表示颜色的明亮程度，0% 是黑色，100% 是白色，而50% 将会是纯色。</li>
+<li><strong>Alpha透明度</strong>: 一个介于0.0（完全透明）到1.0（完全不透明）之间的数值。</li>
+</ul>
+<p>使用HSLA颜色模式，你可以轻松地对颜色的透明度进行精细的控制，它非常适合创建叠加效果、渐变或者当你需要颜色与背景有部分融合时使用。</p>
+<p>在实际应用中，这种颜色的表示方法特别有用，例如在CSS中为背景颜色设置透明度，而不影响元素内的文本或其他内容。通过使用HSLA，你可以在设计中创造出更多层次和深度，同时还能保持颜色的一致性。</p>
+<h1 id="box"><a href="#box" class="headerlink" title="box"></a>box</h1><p>一个简单但实用的CSS类样式<code>.box</code>，这个样式可用于创建具有特定尺寸、边框和背景颜色的盒子。这种类型的盒子在web开发中极为常见，用于各种目的，比如<strong>突出显示内容、作为布局组件或是创建图像和文字的卡片</strong>。使用的四时候创建在div中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>,<span class="number">0.3</span>);</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>让我们一一解析这些属性及其对页面布局的影响：</p>
+<h3 id="背景颜色"><a href="#背景颜色" class="headerlink" title="背景颜色"></a>背景颜色</h3><p><code>background-color: rgb(0, 0, 255, 0.3);</code> 这一行为<code>.box</code>类指定了背景颜色。我们使用RGBA颜色模式，其中A代表透明度。颜色设置为蓝色（红0，绿0，蓝255），并且透明度设置为0.3，即透明度为30%，这会使得盒子背景部分透明，让页面上的背景部分能够透过来。</p>
+<h3 id="内边距和外边距"><a href="#内边距和外边距" class="headerlink" title="内边距和外边距"></a>内边距和外边距</h3><p><code>padding: 10px;</code> 设置了盒子内容与其边框之间的内边距为10像素，为内容提供一定的”呼吸空间”。而<code>margin: 10px;</code> 则定义了盒子与其他页面元素之间的外边距，也是10像素，确保了元素之间有足够的空间，避免了紧挨着。</p>
+<h3 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h3><p>我们通过<code>height: 100px;</code> 和 <code>width: 100px;</code> 分别设置了盒子的高度和宽度为100像素。这为盒子提供了一个均衡的正方形形状，但同时也是硬编码的，意味着无论内容大小如何，盒子都将保持这个尺寸。</p>
+<h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><p>最后，<code>border: 1px solid black;</code> 为盒子提供了一个1像素宽的黑色实线边框，既定义了元素的外形，也增加了视觉对比度，使其更加突出。</p>
+<p>将上述样式应用到任何HTML元素中，您就会获得一个漂亮且功能完备的盒子，可以用来展示内容或作为设计的一部分。盒子的透明背景意味着它可以很好地融合到任何背景上，而内外边距则确保了文本或其他元素不会紧贴到盒子边缘。</p>
+<p>在实际应用中，这种盒子可以用作消息提醒、小部件、卡片或任何需要突出显示的区域。通过调整上述属性，您可以轻松定制这些盒子以适应您网页的特定需求和视觉风格。</p>
+<p>这就是<code>.box</code>类的魅力所在——简单、直观且极其灵活。无论您是初学者还是有经验的开发人员，这样的基础CSS类都是创建引人入胜、具有响应性设计的重要工具。</p>
+<h3 id="使用percent"><a href="#使用percent" class="headerlink" title="使用percent"></a>使用percent</h3><p>百分比通常是相对于包含块（即父元素）的尺寸来计算的。这种方法使得元素在不同屏幕尺寸或设备上具有更好的响应性。下面是一个更新后的<code>.box</code>类，它使用百分比而非像素值：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, <span class="number">0.3</span>);</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5%</span>; <span class="comment">/* 假设是相对于盒子自身的宽度 */</span></span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">2%</span>; <span class="comment">/* 假设是相对于包含块（父元素）的宽度 */</span></span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20%</span>; <span class="comment">/* 假设是相对于包含块（父元素）的高度 */</span></span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50%</span>; <span class="comment">/* 假设是相对于包含块（父元素）的宽度 */</span></span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://yourwebsite.com">Jaketmoon</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://yourwebsite.com/2024/04/22/CSS%E4%BB%8B%E7%BB%8D/">http://yourwebsite.com/2024/04/22/CSS%E4%BB%8B%E7%BB%8D/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yourwebsite.com" target="_blank">Jaketmoon の 博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/04/24/go-gin%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BAtodolist%E7%BD%91%E9%A1%B5/" title="go-gin框架搭建todolist网页"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">go-gin框架搭建todolist网页</div></div></a></div><div class="next-post pull-right"><a href="/2024/04/21/html%E4%BB%8B%E7%BB%8D/" title="html介绍"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">html介绍</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Jaketmoon</div><div class="author-info__description">YOU WANT TO PLAY? LET'S PLAY!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2%E4%BB%A5%E5%8F%8A%E4%B8%8Ehtml%E6%96%87%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">改变颜色以及与html文件连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">2.1.</span> <span class="toc-text">颜色的优先级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#inline%EF%BC%88%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F%EF%BC%89"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">inline（内联样式）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#id%EF%BC%88id%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">id（id选择器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class%EF%BC%88%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">class（类选择器）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#element%EF%BC%88%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%89"><span class="toc-number">2.1.0.4.</span> <span class="toc-text">element（元素选择器）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E8%89%B2%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">调色方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RGB"><span class="toc-number">2.2.1.</span> <span class="toc-text">RGB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E9%A2%9C%E8%89%B2%E7%A0%81"><span class="toc-number">2.2.2.</span> <span class="toc-text">十六进制颜色码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.2.3.</span> <span class="toc-text">颜色关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HSLA"><span class="toc-number">2.2.4.</span> <span class="toc-text">HSLA</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#box"><span class="toc-number">3.</span> <span class="toc-text">box</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2"><span class="toc-number">3.0.1.</span> <span class="toc-text">背景颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E8%BE%B9%E8%B7%9D%E5%92%8C%E5%A4%96%E8%BE%B9%E8%B7%9D"><span class="toc-number">3.0.2.</span> <span class="toc-text">内边距和外边距</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%BA%E5%AF%B8"><span class="toc-number">3.0.3.</span> <span class="toc-text">尺寸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E6%A1%86"><span class="toc-number">3.0.4.</span> <span class="toc-text">边框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8percent"><span class="toc-number">3.0.5.</span> <span class="toc-text">使用percent</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/15/mm32%E5%AD%A6%E4%B9%A0/" title="mm32学习">mm32学习</a><time datetime="2024-07-15T07:28:12.000Z" title="发表于 2024-07-15 15:28:12">2024-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/13/grpc/" title="grpc入门">grpc入门</a><time datetime="2024-07-13T03:21:49.000Z" title="发表于 2024-07-13 11:21:49">2024-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/06/%E8%AF%86%E5%88%AB%E4%B8%8D%E8%89%AF%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%BC%80%E5%8F%91/" title="利用huggingface处理nlp任务">利用huggingface处理nlp任务</a><time datetime="2024-07-06T05:55:29.000Z" title="发表于 2024-07-06 13:55:29">2024-07-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/18/casbin/" title="casbin模型">casbin模型</a><time datetime="2024-05-18T03:18:18.000Z" title="发表于 2024-05-18 11:18:18">2024-05-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/06/JWT/" title="JWT">JWT</a><time datetime="2024-05-06T03:14:54.000Z" title="发表于 2024-05-06 11:14:54">2024-05-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Jaketmoon</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.11.0"></script><script src="/js/main.js?v=4.11.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
