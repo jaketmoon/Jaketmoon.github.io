@@ -3170,4 +3170,58 @@ DNS.1=*.kuangstudy.com
         <tag>AI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>docker部署go web应用</title>
+    <url>/2024/09/09/docker%E9%83%A8%E7%BD%B2go-web%E5%BA%94%E7%94%A8/</url>
+    <content><![CDATA[<p> 使用docker部署的原因是，它会把程序运行所需要的环境全部配置好，这样不管是在什么地方都可以运行。</p>
+<h1 id="编写dockerfile"><a href="#编写dockerfile" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h1><p>要创建Docker镜像（image）必须在配置文件中指定步骤。这个文件默认我们通常称之为<code>Dockerfile</code>。（虽然这个文件名可以随意命名它，但最好还是使用默认的<code>Dockerfile</code>。）</p>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line"><span class="keyword">FROM</span> golang:alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为我们的镜像设置必要的环境变量</span></span><br><span class="line"><span class="keyword">ENV</span> GO111MODULE=on \</span><br><span class="line">    GOPROXY=https://goproxy.cn,direct \</span><br><span class="line">    CGO_ENABLED=<span class="number">0</span> \</span><br><span class="line">    GOOS=linux \</span><br><span class="line">    GOARCH=amd64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动到工作目录：/build</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /build</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将代码复制到容器中</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将我们的代码编译成二进制可执行文件app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> go build -o app .</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移动到用于存放生成的二进制文件的 /dist 目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /dist</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将二进制文件从 /build 目录复制到这里</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cp</span> /build/app .</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 声明服务端口</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">8888</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动容器时运行的命令</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/dist/app&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Dockerfile解析"><a href="#Dockerfile解析" class="headerlink" title="Dockerfile解析"></a>Dockerfile解析</h2><p><code>From </code></p>
+<p>我们正在使用基础镜像<code>golang:alpine</code>来创建我们的镜像。这和我们要创建的镜像一样是一个我们能够访问的存储在Docker仓库的基础镜像。这个镜像运行的是alpine Linux发行版，该发行版的大小很小并且内置了Go，非常适合我们的用例。有大量公开可用的Docker镜像，请查看<a href="https://hub.docker.com/_/golang">https://hub.docker.com/_/golang</a></p>
+<p><code>Env </code></p>
+<p>用来设置我们编译阶段需要用的环境变量。</p>
+<p><code>WORKDIR，COPY，RUN</code></p>
+<p>这几个命令做的事都写在注释里了，很好理解。</p>
+<p><code>EXPORT，CMD</code></p>
+<p>最后，我们声明服务端口，因为我们的应用程序监听的是这个端口并通过这个端口对外提供服务。并且我们还定义了在我们运行镜像的时候默认执行的命令<code>CMD [&quot;/dist/app&quot;]</code>。</p>
+<h2 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h2><p>在项目目录下，执行下面的命令创建镜像，并指定镜像名称为<code>goweb_app</code>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build . -t goweb_app</span><br></pre></td></tr></table></figure>
+
+<p>等待构建过程结束，输出如下提示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">Successfully built 90d9283286b7</span><br><span class="line">Successfully tagged goweb_app:latest</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mongodb</title>
+    <url>/2024/08/14/mongodb/</url>
+    <content><![CDATA[<p>创建使用 <strong>Go Driver</strong> 连接到 <strong>MongoDB Atlas 集群</strong>的应用程序</p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>GO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>simple-Chat-Application</title>
+    <url>/2024/08/08/simple-Chat-Application/</url>
+    <content><![CDATA[<p>使用技术栈：Go, Gin, MongoDB, and WebSocket</p>
+<p>来源：<a href="https://dev.to/gbubemi22/building-a-simple-chat-application-with-go-gin-mongodb-and-websocket-2joo">https://dev.to/gbubemi22/building-a-simple-chat-application-with-go-gin-mongodb-and-websocket-2joo</a></p>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>GO</tag>
+      </tags>
+  </entry>
 </search>
