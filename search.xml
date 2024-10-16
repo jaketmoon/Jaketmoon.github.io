@@ -22,13 +22,15 @@
     <title>CSS介绍</title>
     <url>/2024/04/22/CSS%E4%BB%8B%E7%BB%8D/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>CSS（Cascading Style Sheets）是一种样式表语言，用于描述HTML或XML文档的呈现。它使得开发者能够控制网页的布局、颜色、字体和动画等方面的外观。CSS 提高了内容与表现的分离程度，能够使样式在多个页面中重用，从而减少了代码量并提高了网站的维护性。开发者可以通过类、ID 和其他选择器来应用样式，而且可以利用层叠和继承规则来精细控制规则的应用。随着CSS3和其后续更新的推出，CSS也引入了响应式设计和动画等先进特性，使得创建现代、交互式的网页变得更加容易。</p>
+<p><a href="https://flukeout.github.io/%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E9%80%9A%E8%BF%87%E8%BF%99%E4%B8%AA%E7%BD%91%E7%AB%99%E6%9D%A5%E5%AD%A6%E4%B9%A0css%E8%AF%AD%E6%B3%95">https://flukeout.github.io/可以直接通过这个网站来学习css语法</a></p>
 <h1 id="改变颜色以及与html文件连接"><a href="#改变颜色以及与html文件连接" class="headerlink" title="改变颜色以及与html文件连接"></a>改变颜色以及与html文件连接</h1><h2 id="颜色的优先级"><a href="#颜色的优先级" class="headerlink" title="颜色的优先级"></a>颜色的优先级</h2><p>在selector中</p>
 <p>inline的写法&gt;id&gt;class&gt;elements的优先级来显示</p>
 <h4 id="inline（内联样式）"><a href="#inline（内联样式）" class="headerlink" title="inline（内联样式）"></a>inline（内联样式）</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&quot;color: black&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="id（id选择器）"><a href="#id（id选择器）" class="headerlink" title="id（id选择器）"></a>id（id选择器）</h4><p>HTML:</p>
+<h4 id="id（id选择器）"><a href="#id（id选择器）" class="headerlink" title="id（id选择器）"></a>id（id选择器）</h4><p>id选择器选择一个指定id的页面元素来制定样式</p>
+<p>HTML:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">id</span>=<span class="string">&quot;heading&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>CSS:</p>
@@ -36,7 +38,8 @@
 
 
 
-<h4 id="class（类选择器）"><a href="#class（类选择器）" class="headerlink" title="class（类选择器）"></a>class（类选择器）</h4><p>html:</p>
+<h4 id="class（类选择器）"><a href="#class（类选择器）" class="headerlink" title="class（类选择器）"></a>class（类选择器）</h4><p>class的东西</p>
+<p>html:</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span>Some great food I tasted<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>css:</p>
@@ -49,13 +52,19 @@
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">h1</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>如果要分文件使用element来改变颜色</p>
-<p>新建一个styles.css文件在同一文件夹下面，我们可以通过这个文件更改html中h1的颜色字体</p>
+<p>新建一个styles.css文件在同一文件夹下面，我们可以通过这个文件更改html中<strong>所有h1</strong>的颜色字体</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: chartreuse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>在html的head中加入</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;styles<span class="selector-class">.css</span>&quot;&gt;	</span><br></pre></td></tr></table></figure>
 
 <p><strong>需要注意的是，如果在两个优先级相同的渲染下，颜色渲染是从上到下的，所以最head下面的颜色的定义是页面颜色的最终定义</strong></p>
+<h4 id="分组选择器"><a href="#分组选择器" class="headerlink" title="分组选择器"></a>分组选择器</h4><p>要选择多个元素，元素之间使用<code>,</code>连接</p>
+<h4 id="相邻兄弟选择器"><a href="#相邻兄弟选择器" class="headerlink" title="相邻兄弟选择器"></a>相邻兄弟选择器</h4><p>相邻元素,使用<code>+</code>连接</p>
+<p>This selects all B elements that directly follow A. Elements that follow one another are called siblings. They’re on the same level, or depth.</p>
+<h4 id="通用兄弟选择器"><a href="#通用兄弟选择器" class="headerlink" title="通用兄弟选择器"></a>通用兄弟选择器</h4><p>~</p>
+<h4 id="直接后代选择器"><a href="#直接后代选择器" class="headerlink" title="直接后代选择器"></a>直接后代选择器</h4><blockquote>
+</blockquote>
 <h2 id="调色方式"><a href="#调色方式" class="headerlink" title="调色方式"></a>调色方式</h2><p>在网页设计中，颜色是用来增强用户体验的重要元素之一。选择正确的颜色和调色方式对于设计师来说至关重要。以下是几种常用的调色方式：</p>
 <h3 id="RGB"><a href="#RGB" class="headerlink" title="RGB"></a>RGB</h3><p>RGB是一种颜色模式，它基于光的三原色：红色（Red）、绿色（Green）、蓝色（Blue）。每种颜色均通过一个介于0到255的值来表示，其中0代表最低亮度（无光），255代表最高亮度（全亮）。</p>
 <p>示例：</p>
@@ -3216,12 +3225,83 @@ DNS.1=*.kuangstudy.com
     <url>/2024/08/08/simple-Chat-Application/</url>
     <content><![CDATA[<p>使用技术栈：Go, Gin, MongoDB, and WebSocket</p>
 <p>来源：<a href="https://dev.to/gbubemi22/building-a-simple-chat-application-with-go-gin-mongodb-and-websocket-2joo">https://dev.to/gbubemi22/building-a-simple-chat-application-with-go-gin-mongodb-and-websocket-2joo</a></p>
-]]></content>
+<p>首先是程序的入口</p>
+<h1 id="main"><a href="#main" class="headerlink" title="main"></a>main</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;chat-app/internal/server&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	server := server.NewServer()</span><br><span class="line">	err := server.ListenAndServe()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(fmt.Sprintf(<span class="string">&quot;cannot start server&quot;</span>, err))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>调用了 server 包中的 <code>NewServer()</code> 函数，实例化了一个 server 对象，这里可以认为它是整个应用服务器的核心。这个函数可能用来初始化 HTTP 服务器、路由以及其他服务。</p>
+<p><code>server.ListenAndServe()</code>是调用http包中的方法开始监听指定端口并启动服务器的函数，负责处理传入的 HTTP&#x2F;WebSocket 请求。</p>
+<h1 id="server"><a href="#server" class="headerlink" title="server"></a>server</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> server</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;chat-app/internal/database&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;go.mongodb.org/mongo-driver/mongo&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;strconv&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> &#123;</span><br><span class="line">	port <span class="type">int</span></span><br><span class="line">	db   *mongo.Database</span><br><span class="line">	ws   *websocket.WebsocketServer</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewServer</span><span class="params">()</span></span> *http.Server &#123;</span><br><span class="line">	portStr := os.Getenv(<span class="string">&quot;PORT&quot;</span>)       <span class="comment">//获取环境变量PORT</span></span><br><span class="line">	port, err := strconv.Atoi(portStr) <span class="comment">//让portStr转换为int类型</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		port = <span class="number">8080</span></span><br><span class="line">	&#125;</span><br><span class="line">	db, err := database.New()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">&quot;Error connecting to database&quot;</span>)</span><br><span class="line">		os.Exit(<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	conversationService := service.NewConversationService(db)</span><br><span class="line">	messageService := service.NewMessageService(db)</span><br><span class="line">	ws := websocket.NewWebsocketServer(conversationService, messageService)</span><br><span class="line">	<span class="keyword">go</span> ws.Run() <span class="comment">//启动websocket服务</span></span><br><span class="line">	newServer := &amp;Server&#123;</span><br><span class="line">		port: port,</span><br><span class="line">		db:   db,</span><br><span class="line">		ws:   ws,</span><br><span class="line">	&#125;</span><br><span class="line">	server := &amp;http.Server&#123;</span><br><span class="line">		Addr:         fmt.Sprintf(<span class="string">&quot;:%d&quot;</span>, newServer.port),</span><br><span class="line">		Handler:      newServer.RegisterRouter(),</span><br><span class="line">		IdleTimeout:  time.Minute,      <span class="comment">//空闲超时时间</span></span><br><span class="line">		ReadTimeout:  <span class="number">10</span> * time.Second, <span class="comment">//读取超时时间</span></span><br><span class="line">		WriteTimeout: <span class="number">30</span> * time.Second, <span class="comment">//写入超时时间</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> server</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Server 结构体定义了服务器所需的组件：</p>
+<p>​	port：服务器监听的端口。</p>
+<p>​	db：连接的 MongoDB 数据库。</p>
+<p>​	ws：WebSocket 服务器实例。</p>
+<p>在NewServer函数中	</p>
+<ol>
+<li><strong>获取端口</strong>：从环境变量 PORT 中读取端口号，如果转换失败则默认为 8080。</li>
+</ol>
+<p>​	2.	<strong>数据库连接</strong>：通过调用database包中的 database.New() 函数连接 MongoDB。</p>
+<p>​	3.	<strong>服务初始化</strong>：初始化服务，包括 ConversationService 和 MessageService。这些服务可能分别处理聊天会话和消息相关的业务逻辑。</p>
+<p>​	4.	<strong>WebSocket 服务器</strong>：通过 websocket.NewWebsocketServer() 创建 WebSocket 服务器实例，并将服务注入其中。启动 WebSocket 服务器通过 go ws.Run()，使其在后台运行。</p>
+<pre><code>5.	**创建 HTTP 服务器**：通过 http.Server 创建 HTTP 服务器，设置了端口、处理器（通过 RegisterRouter() 注册的路由），以及请求的超时时间配置。
+</code></pre>
+<blockquote>
+<p>有趣的是，这部分代码之所以选择先创建一个 Server 结构体，然后再通过该结构体为 http.Server 传递参数，而不是直接给http.Server传参数，主要是为了实现<strong>模块化设计</strong>，便于<strong>扩展性</strong>和<strong>可维护性</strong>。将一些核心模块放入自己创建的server中有利于之后的开发，要增加的时候直接增加一个字段就行了，在之后的一些方法中，是不能直接对http.Server定义方法的func (s *http.Server) RegisterRouter() http.Handler，这个就会报错。</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> server</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span></span> RegisterRouter() http.Handler &#123;</span><br><span class="line">	r := gin.Default()</span><br><span class="line">	r.Use(gin.Logger())</span><br><span class="line">	r.GET(<span class="string">&quot;/&quot;</span>, s.HelloWorldHandler)</span><br><span class="line">	r.Use(middleware.ErrorHandlerMiddleware())</span><br><span class="line">	r.NoRoute(middleware.HandleNotFound)</span><br><span class="line"></span><br><span class="line">	userController := controller.NewUserController()</span><br><span class="line"></span><br><span class="line">	r.POST(<span class="string">&quot;v1/auth/users/create&quot;</span>, userController.CreateUserHttp)</span><br><span class="line">	r.POST(<span class="string">&quot;v1/auth/users/login&quot;</span>, userController.LoginUserHandler)</span><br><span class="line">	r.POST(<span class="string">&quot;v1/auth/users/verify-email&quot;</span>, userController.VerifyEmailHandler)</span><br><span class="line">	r.POST(<span class="string">&quot;v1/auth/users/send-email&quot;</span>, userController.SendEmailHandler)</span><br><span class="line"></span><br><span class="line">	authorized := r.Group(<span class="string">&quot;/v1/auth&quot;</span>)</span><br><span class="line">	authorized.Use(middleware.VerifyToken())</span><br><span class="line">	&#123;</span><br><span class="line">		authorized.POST(<span class="string">&quot;/users/upload-image&quot;</span>, userController.UploadImageHandler)</span><br><span class="line">	&#125;</span><br><span class="line">	r.GET(<span class="string">&quot;/ws&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">		s.ws.HandleConnections(c.Writer, c.Request)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> r</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Server)</span></span> HelloWorldHandler(c *gin.Context) &#123;</span><br><span class="line">	resp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">string</span>)</span><br><span class="line">	resp[<span class="string">&quot;message&quot;</span>] = <span class="string">&quot;Hello World&quot;</span></span><br><span class="line">	c.JSON(http.StatusOK, resp)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	1.	<strong>Gin 初始化</strong>：使用 gin.Default() 初始化 Gin 实例，默认开启了日志和恢复中间件。</p>
+<p>​	2.	<strong>基础路由</strong>：</p>
+<p>​	•	&#x2F; 路由：通过 s.HelloWorldHandler 处理基础的 GET 请求，返回一个 “Hello World” 消息。</p>
+<p>​	3.	<strong>错误处理中间件</strong>：</p>
+<p>​	•	使用middleware包中的  middleware.ErrorHandlerMiddleware() 处理全局错误，并定义了默认路由 NoRoute 处理 404 错误。</p>
+<p>​	4.	<strong>用户路由</strong>：</p>
+<p>​	•	注册了几个与用户身份验证相关的 API 路由，如用户创建、登录、验证邮件等操作。</p>
+<p>​	•	使用了 VerifyToken() 中间件来保护部分路由，确保用户经过身份验证后才能访问这些 API。</p>
+<p>​	5.	<strong>WebSocket 路由</strong>：</p>
+<p>​	•	r.GET(“&#x2F;ws”, …) 用于处理 WebSocket 连接，当请求 &#x2F;ws 时，WebSocket 服务器通过 s.ws.HandleConnections() 处理该请求，实现实时聊天功能。</p>
+<p>​	一个简单的 Hello World API。请求这个路由时，会返回一个包含 “message”: “Hello World” 的 JSON 响应，状态码为 200 OK。</p>
+<h1 id="model"><a href="#model" class="headerlink" title="model"></a>model</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> model</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;go.mongodb.org/mongo-driver/bson/primitive&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Conversation <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID         primitive.ObjectID <span class="string">`bson:&quot;_id,omitempty&quot;`</span></span><br><span class="line">    SenderId   primitive.ObjectID <span class="string">`bson:&quot;sender_id,omitempty&quot;`</span></span><br><span class="line">    ReceiverId primitive.ObjectID <span class="string">`bson:&quot;receiver_id,omitempty&quot;`</span></span><br><span class="line">    CreatedAt  time.Time          <span class="string">`bson:&quot;created_at,omitempty&quot;`</span></span><br><span class="line">    UpdatedAt  time.Time          <span class="string">`bson:&quot;updated_at,omitempty&quot;`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Message <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID             primitive.ObjectID <span class="string">`bson:&quot;_id,omitempty&quot;`</span></span><br><span class="line">    ConversationId primitive.ObjectID <span class="string">`bson:&quot;conversation_id,omitempty&quot;`</span></span><br><span class="line">    SenderId       primitive.ObjectID <span class="string">`bson:&quot;sender_id,omitempty&quot;`</span></span><br><span class="line">    Message        <span class="type">string</span>             <span class="string">`json:&quot;message&quot;`</span></span><br><span class="line">    CreatedAt      time.Time          <span class="string">`bson:&quot;created_at,omitempty&quot;`</span></span><br><span class="line">    UpdatedAt      time.Time          <span class="string">`bson:&quot;updated_at,omitempty&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义了一下需要的model</p>
+<h1 id="database"><a href="#database" class="headerlink" title="database"></a>database</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> database</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;context&quot;</span></span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;go.mongodb.org/mongo-driver/mongo&quot;</span></span><br><span class="line">    <span class="string">&quot;go.mongodb.org/mongo-driver/mongo/options&quot;</span></span><br><span class="line">    <span class="string">&quot;log&quot;</span></span><br><span class="line">    <span class="string">&quot;os&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> globalClient *mongo.Client</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">    client, err := DBinstance()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       log.Fatal(<span class="string">&quot;Failed to connect to MongoDB client:%v&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    globalClient = client</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DBinstance</span><span class="params">()</span></span> (*mongo.Client, <span class="type">error</span>) &#123;</span><br><span class="line">    MongoDb := os.Getenv(<span class="string">&quot;DB_DATABASE&quot;</span>)</span><br><span class="line">    client, err := mongo.Connect(context.Background(), options.Client().ApplyURI(MongoDb))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;Failed to connect to MongoDB: %w&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    ctx, cancel := context.WithTimeout(context.Background(), <span class="number">10</span>*time.Second) <span class="comment">//设置超时时间</span></span><br><span class="line">    <span class="keyword">defer</span> cancel()                                                           <span class="comment">//关闭连接</span></span><br><span class="line">    err = client.Ping(ctx, <span class="literal">nil</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;Failed to ping to MongoDB: %w&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Connected to MongoDB&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> client, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span></span> (*mongo.Database, <span class="type">error</span>) &#123;</span><br><span class="line">    client, err := DBinstance()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> client.Database(<span class="string">&quot;Gomongodb&quot;</span>), <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Service <span class="keyword">struct</span> &#123;</span><br><span class="line">    db *mongo.Client</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Service)</span></span> OpenCollection(collectionName <span class="type">string</span>) *mongo.Collection &#123;</span><br><span class="line">    collection := s.db.Database(<span class="string">&quot;Gomongodb&quot;</span>).Collection(collectionName)</span><br><span class="line">    <span class="keyword">return</span> collection</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先创建一个<code>globalClient</code>的<strong>全局</strong>指针，指向<code>mongo.Client</code>，所以在程序的任何一个地方都可以用，init() 函数在程序启动时自动执行，调用 <code>DBinstance() </code>连接 MongoDB 并保存全局客户端。</p>
+<p><strong>在<code>DBinstance() </code>函数中</strong>，通过从环境变量 DB_DATABASE 读取 MongoDB 的 URI，使用 mongo.Connect() 方法创建客户端连接，以及<code>Ping()</code> 方法用来验证连接是否成功，确保 MongoDB 可访问。</p>
+<p><strong>New()</strong> <strong>函数</strong>：返回连接到名为 “Gomongodb” 的数据库实例。”Gomongodb” 或其他数据库名称是你在连接到 MongoDB 集群（Cluster）时指定的数据库名称。你可以在 MongoDB Atlas 的集群中通过代码连接到任何你指定的数据库。如果这个数据库还不存在，MongoDB 会在你首次向该数据库插入数据时自动创建它。</p>
+<p><strong>Service</strong> <strong>结构体</strong>：封装了 MongoDB 客户端，并通过 OpenCollection() 方法返回指定名称的集合对象，用于后续的数据库操作。</p>
+<p><strong>OpenCollection() 方法</strong>的作用是简化访问 MongoDB 集合的操作。它接受一个集合名称作为参数，并返回与该集合关联的 mongo.Collection 实例。这样，你可以使用此方法轻松访问数据库中的不同集合，而不需要每次手动写出完整的数据库和集合的路径。例如，如果你想操作名为 users 的集合，只需调用 OpenCollection(“users”)，然后可以对这个集合执行插入、查询等操作。</p>
+<blockquote>
+<p>为什么还需要new函数，直接使用globalclient不行吗，因为init函数不是程序开始就执行了吗</p>
+<p>1.<strong>代码可读性和模块化</strong>：通过 New() 函数，你可以为不同的场景提供数据库实例，并且使得代码更易于理解和维护。</p>
+<p>2.<strong>错误处理</strong>：New() 函数为连接过程增加了错误处理的逻辑，确保每次使用数据库时都能正确处理错误。</p>
+<p>3.<strong>灵活性</strong>：如果未来有多个数据库或者客户端需要连接，不同的 New() 函数可以帮助实现更灵活的设计。</p>
+</blockquote>
+<h1 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h1>]]></content>
       <categories>
         <category>web</category>
       </categories>
       <tags>
         <tag>GO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>grpc-gateway</title>
+    <url>/2024/09/14/grpc-gateway/</url>
+    <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/602560212">gRPC-Gateway使用指南 - 知乎 (zhihu.com)</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>grpc-gateway 是一个插件，它可以将 gRPC 服务暴露为 HTTP&#x2F;1.1 RESTful API。它的作用是在 gRPC 服务器和 RESTful API 之间起到一个桥梁的作用，通过代理将 HTTP 请求转换为 gRPC 请求。这样，客户端可以通过标准的 REST API 调用后端的 gRPC 服务。<br>直接创建一个 gRPC 客户端与服务端通信，但这要求客户端必须支持 gRPC，这在浏览器或不支持 gRPC 的客户端中不容易实现。</p>
+<p><strong>为什么使用 grpc-gateway：</strong></p>
+<p>​	•	方便前端或者非 gRPC 客户端与 gRPC 后端进行交互。</p>
+<p>​	•	支持标准的 HTTP&#x2F;REST 请求，同时也保留了 gRPC 的性能优势。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"># 安装grpc-gateway插件</span><br><span class="line">$ <span class="keyword">go</span> install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway@latest</span><br><span class="line">$ <span class="keyword">go</span> install google.golang.org/protobuf/cmd/protoc-gen-<span class="keyword">go</span>@latest</span><br><span class="line">$ <span class="keyword">go</span> install google.golang.org/grpc/cmd/protoc-gen-<span class="keyword">go</span>-grpc@latest</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">go</span> get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>go</tag>
       </tags>
   </entry>
 </search>
